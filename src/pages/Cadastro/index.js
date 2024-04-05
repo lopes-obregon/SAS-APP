@@ -4,24 +4,20 @@ import * as Animatable from 'react-native-animatable'
 
 import {useNavigation} from '@react-navigation/native'
 
-export default function SignIn(){
+export default function Cadastro(){
     const navigation = useNavigation();
     return (
         <View style={styles.container}>            
 
            <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
             
-            <Text style={styles.message}>Entre com sua conta</Text>
+            <Text style={styles.message}>Cadastre-se</Text>
         </Animatable.View>
 
 
         <Animatable.View animation="fadeInUp" style={styles.containerForm}>
 
-        <Image
-                    source={require('../../assets/teste.png')}
-                    style= {{width:'100%'}}
-                    resizeMode="contain"
-                />
+        
 
         <Text style={styles.title}>E-mail</Text>
             <TextInput
@@ -35,16 +31,23 @@ export default function SignIn(){
                 placeholder="Digite sua senha..."
                 style={styles.input}
                 />
+        
+        <Text style={styles.title}>Repetir Senha</Text>
+                <TextInput
+                placeholder="Digite sua senha..."
+                style={styles.input}
+                />
 
-        <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Entrar</Text>
+        <TouchableOpacity style={styles.button} 
+        onPress={ () => navigation.navigate('Cadastro2')}>
+            <Text style={styles.buttonText}>Prosseguir</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
         style={styles.buttonRegister} 
-        onPress={ () => navigation.navigate('Cadastro')}
+        onPress={ () => navigation.navigate('SignIn')}
         >
-            <Text style={styles.registerText}>Não possui conta? Cadastre-se!</Text>
+            <Text style={styles.registerText}>Já possui conta? Entre aqui!</Text>
         </TouchableOpacity>
 
         </Animatable.View>
@@ -70,18 +73,17 @@ const styles = StyleSheet.create({
     },
     message:{
         color: '#FFF',
-        fontSize: 28,
+        fontSize: 40,
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center',
 
     },
     containerForm:{
         backgroundColor: '#FFF',
         flex:1,
-        borderTopLeftRadius: 500,
-        borderTopRightRadius: 500,
+        borderTopLeftRadius: 50,
+        borderTopRightRadius: 50,
         paddingStart: '10%',
         paddingEnd: '10%',
 
