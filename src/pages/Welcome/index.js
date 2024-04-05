@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
         marginBottom:12,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
     },
     button:{
         position: 'absolute',
