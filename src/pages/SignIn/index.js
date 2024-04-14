@@ -1,11 +1,28 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from "react-native";
 import * as Animatable from 'react-native-animatable'
-
+import api from '../../services/api'
 import {useNavigation} from '@react-navigation/native'
 
 export default function SignIn(){
     const navigation = useNavigation();
+    const [email, setEmail] = useState(''); //armazena os valores de email
+    const [senha, setSenha] = useState('');// armazena os valores de senha
+    //função para realizar o login
+    async function login(){
+        //variavel para guardar o formato enviado para a api
+        let json ={
+            "usuario":email,
+            "senha":senha
+        }
+        try {
+            await api.post('/session', json).then(response => {
+                Alert.alert("Login realizado com sucesso!");
+            })
+        } catch (error) {
+            Alert.alert(error)
+        }
+    }
     return (
         <View style={styles.container}>            
 
@@ -26,7 +43,9 @@ export default function SignIn(){
         <Text style={styles.title}>E-mail</Text>
             <TextInput
             placeholder="Digite seu e-mail..."
-            style={styles.input}
+            style={styles.input} 
+           
+            onChangeText={setEmail}
             />
 
 
@@ -34,9 +53,11 @@ export default function SignIn(){
                 <TextInput
                 placeholder="Digite sua senha..."
                 style={styles.input}
+                
+                onChangeText={setSenha}
                 />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={login}>
             <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
