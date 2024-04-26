@@ -118,12 +118,14 @@ export default function Initial(){
                 SERVIÇOS
             </Heading>
 
-            <HStack  w="100%" alignItems="center" justifyContent="space-between" safeArea>
+
+            
+            <HStack w="100%" alignItems="center" justifyContent="space-between" safeArea >
                 
 
-                <Box rounded="md" flexDir="row" marginTop={1} padding={5}  borderRadius={30} height={100} width={380} >
+                <Box backgroundColor="#89BF9E" rounded="md" flexDir="row" padding={3} height={20} width={390}>
 
-                <TouchableOpacity
+                <TouchableOpacity 
                     onPress={ () => navigation.navigate('Agendamento')}>
 
                         <Icon 
@@ -132,8 +134,9 @@ export default function Initial(){
                         size={10}
                         color="#408755"
                         marginRight={12}
+                       
                         />
-                    <Heading size="xs">Agendamento</Heading>
+                    <Heading  fontSize='12px'>Agendamento</Heading>
                         
                     </TouchableOpacity> 
 
@@ -142,11 +145,12 @@ export default function Initial(){
                         <Icon 
                         as={Feather}
                         name="activity"
-                        size={9}
+                        size={10}
                         color="#408755"
                         marginRight={12}
                         marginLeft={5}
                         />
+                    <Heading fontSize='12px'>       Exames</Heading>
                     </TouchableOpacity>
 
                     <TouchableOpacity>
@@ -154,11 +158,12 @@ export default function Initial(){
                         <Icon 
                         as={Feather}
                         name="toggle-left"
-                        size={9}
+                        size={10}
                         color="#408755"
                         marginRight={12}
                         marginLeft={5}
                         />
+                    <Heading fontSize='12px'>     Medicações</Heading>
                     </TouchableOpacity>
 
                     <TouchableOpacity>
@@ -166,15 +171,17 @@ export default function Initial(){
                     <Icon 
                     as={Feather}
                     name="list"
-                    size={9}
+                    size={10}
                     color="#408755"
-                    marginRight={12}
                     marginLeft={5}
+                    
                     />
+                    <Heading fontSize='12px'>       Outros</Heading>
                     </TouchableOpacity>
                     
                     
                 </Box>
+                
             </HStack>
         </Box>
     </NativeBaseProvider>
