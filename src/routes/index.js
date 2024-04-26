@@ -11,6 +11,8 @@ import {Ionicons} from '@expo/vector-icons'
 import Register from "../pages/Register";
 import Register2 from "../pages/Register2";
 import Agendamento from "../pages/Agendamento";
+import Covid from "../pages/Covid";
+import Vacine from "../pages/Vacine";
 
 
 const Tab = createBottomTabNavigator();
@@ -129,6 +131,18 @@ function Routes(){
         options={{headerShown: false}}
     />
     
+    <Stack.Screen
+        name="Covid"
+        component={Covid}
+        options={{headerShown: false}}
+    />
+
+    <Stack.Screen
+            name="Vacine"
+            component={Vacine}
+            options={{headerShown: false}}
+        />
+
 
     </Stack.Navigator>
 

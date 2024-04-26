@@ -28,7 +28,8 @@ export default function Initial(){
                 <HStack  w="100%" alignItems="center" justifyContent="space-between" safeArea>
                     <Box rounded="md" flexDir="row" alignItems="center">
                         
-                        <Pressable>
+                        <TouchableOpacity
+                        onPress={ () => navigation.navigate('Welcome')}>
                         <Icon 
                             as={Feather}
                             name="chevron-left"
@@ -36,7 +37,7 @@ export default function Initial(){
                             color="#408755"
                             />   
 
-                        </Pressable>
+                        </TouchableOpacity>
 
                     
                         
@@ -49,7 +50,8 @@ export default function Initial(){
 
                     <Box rounded="md" flexDir="row" alignItems="center">
                         
-                        <Pressable>
+                        <TouchableOpacity
+                        onPress={ () => navigation.navigate('Chat')}>
 
                         <Icon 
                         as={Feather}
@@ -58,9 +60,9 @@ export default function Initial(){
                         color="#408755"
                         marginRight={4}
                         />
-                        </Pressable>
+                        </TouchableOpacity>
 
-                        <Pressable>
+                        <TouchableOpacity>
 
                             <Icon 
                             as={Feather}
@@ -69,9 +71,9 @@ export default function Initial(){
                             color="#408755"
                             marginRight={4}
                             />
-                        </Pressable>
+                        </TouchableOpacity>
 
-                        <Pressable>
+                        <TouchableOpacity>
 
                         <Icon 
                             as={Feather}
@@ -79,39 +81,42 @@ export default function Initial(){
                             size={7}
                             color="#408755"
                             /> 
-                        </Pressable>
+                        </TouchableOpacity>
                     </Box>
                 </HStack>
                 
 
                 <HStack  w="100%" alignItems="center" justifyContent="space-between" safeArea>
-                    <Box rounded="md" flexDir="row"  padding={5} backgroundColor="#408755" borderRadius={30} height={163} width={380} >
+                    <TouchableOpacity
+                    onPress={ () => navigation.navigate('Vacine')}>
+                        <Box rounded="md" flexDir="row"  padding={5} backgroundColor="#408755" borderRadius={30} height={163} width={380} >
+                            
                         
-                    
-                        
-                        <Box>
-                            <Box marginTop={10}>
-                                <Heading size="sm" color="#FFF" >POR QUE SE VACINAR?</Heading>
-                            </Box>
+                            
+                            <Box>
+                                <Box marginTop={10}>
+                                    <Heading size="sm" color="#FFF" >POR QUE SE VACINAR?</Heading>
+                                </Box>
 
-                            <Box marginLeft={5} alignItems="center" marginTop={4}  backgroundColor="#FFF" borderRadius={30} height={5} width={120}>
-                                <Pressable>
+                                <Box marginLeft={5} alignItems="center" marginTop={4}  backgroundColor="#FFF" borderRadius={30} height={5} width={120}>
                                     
-                                    <Heading size="sm" color="#408755">LEIA AGORA</Heading>
-                                </Pressable>
-                            </Box>
-                        </Box>
-                        
-                        <Box>
-                        <Image
-                                        source={require('../../assets/initial.png')}
                                         
-                                        resizeMode="contain"
-                                    />
+                                        <Heading size="sm" color="#408755">LEIA AGORA</Heading>
+                                    
+                                </Box>
+                            </Box>
+                            
+                            <Box>
+                            <Image
+                                            source={require('../../assets/initial.png')}
+                                            
+                                            resizeMode="contain"
+                                        />
+                            
+                            </Box> 
                         
-                        </Box> 
-                    
-                    </Box>
+                        </Box>
+                    </TouchableOpacity>
                 </HStack>
 
                 <Heading size="md" color="#406755" marginLeft={2}>
@@ -188,21 +193,24 @@ export default function Initial(){
                     Informações sobre a COVID-19
                 </Heading>
 
-                <Box alignSelf="center" marginTop={0} width={389} height={340} background="#ECECEC" borderRadius={30} marginBottom={20}>
-                    <Image
-                                        source={require('../../assets/covid.png')}
-                                        
-                                        resizeMode="contain"
-                                    />
+                <TouchableOpacity
+                onPress={ () => navigation.navigate('Covid')}>
+                    <Box alignSelf="center" marginTop={0} width={389} height={340} background="#ECECEC" borderRadius={30} marginBottom={20}>
+                        <Image
+                                            source={require('../../assets/covid.png')}
+                                            
+                                            resizeMode="contain"
+                                        />
 
-                    <Box alignItems="center" marginLeft={130}  backgroundColor="#409755" borderRadius={30} height={5} width={120}>
-                                <TouchableOpacity>
+                        <Box alignItems="center" marginLeft={130}  backgroundColor="#409755" borderRadius={30} height={5} width={120}>
+                                
+                                        
+                                        <Heading size="sm" color="#FFFFFF">VEJA AGORA</Heading>
                                     
-                                    <Heading size="sm" color="#FFFFFF">VEJA AGORA</Heading>
-                                </TouchableOpacity>
-                            </Box>
-                    
-                </Box>
+                                </Box>
+                        
+                    </Box>
+                </TouchableOpacity>
             </Box>
         </NativeBaseProvider>
     </ScrollView>    
