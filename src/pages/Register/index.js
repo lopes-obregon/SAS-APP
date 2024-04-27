@@ -4,6 +4,8 @@ import * as Animatable from 'react-native-animatable'
 
 import {useNavigation} from '@react-navigation/native'
 
+
+/* Essa é a primeira página de registro*/ 
 export default function Register(){
     const navigation = useNavigation();
     return (

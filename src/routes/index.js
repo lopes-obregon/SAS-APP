@@ -18,8 +18,11 @@ import Vacine from "../pages/Vacine";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+
+/* Aqui são as rotas para navegar entre as abas e as configurações da Tab Bar*/ 
 function Tabs(){
     return(
+        /* Configurações Tab Bar*/ 
      <Tab.Navigator
          screenOptions={{
              tabBarShowLabel: true,
@@ -41,7 +44,7 @@ function Tabs(){
 
          }}
      >
-
+        
         <Tab.Screen
          name="Início"
          component={Initial}
@@ -54,7 +57,7 @@ function Tabs(){
          }
         }}
          />
-
+        
          <Tab.Screen
          name="Chat"
          component={Chat}
@@ -65,6 +68,7 @@ function Tabs(){
                 }
                 return <Ionicons name="chatbubble-ellipses-outline" size={size} color={color}/>
              }
+             /* Aqui são as abas e icones da Tab Bar */ 
         }}
      />
 
@@ -91,7 +95,7 @@ function Tabs(){
      
  }
  
-
+/* Abaixo estão as rotas*/ 
 function Routes(){
    return(
     <Stack.Navigator>

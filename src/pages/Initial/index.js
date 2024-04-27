@@ -6,26 +6,34 @@ import {Link, useNavigation} from '@react-navigation/native'
 import { Feather } from '@expo/vector-icons'
 import {LinearGradient} from 'expo-linear-gradient'
 
+
+/*Aqui é a configuração do gradiente do background*/
 const config = {
     dependencies:{
         'linear-gradient': LinearGradient
     }
 }
 
+/* Essa é a página inicial do usuário */ 
 export default function Initial(){
     const navigation = useNavigation();
 
     return(
-
+    /* O ScrolView é a barra de rolagem */
     <ScrollView>
         <NativeBaseProvider config={config}>
+            
             <Box padding={4} flex={1} flexDirection="column" bg={{
                 linearGradient: {
                     colors:["#F3F3F3","green.700"]
                 }
+                 /* Configurações do Gradiente */
+                 
             }}>
-            
+                
+                
                 <HStack  w="100%" alignItems="center" justifyContent="space-between" safeArea>
+                    
                     <Box rounded="md" flexDir="row" alignItems="center">
                         
                         <TouchableOpacity
@@ -41,15 +49,15 @@ export default function Initial(){
 
                     
                         
-                        
+                       
                     <Heading marginLeft={4} size="sm" 
                     color="#408755">OLÁ SR(a) PACIENTE!</Heading>
                         
                         
                     </Box>
-
+                    
                     <Box rounded="md" flexDir="row" alignItems="center">
-                        
+                       
                         <TouchableOpacity
                         onPress={ () => navigation.navigate('Chat')}>
 
@@ -84,8 +92,8 @@ export default function Initial(){
                         </TouchableOpacity>
                     </Box>
                 </HStack>
+            
                 
-
                 <HStack  w="100%" alignItems="center" justifyContent="space-between" safeArea>
                     <TouchableOpacity
                     onPress={ () => navigation.navigate('Vacine')}>
@@ -118,7 +126,7 @@ export default function Initial(){
                         </Box>
                     </TouchableOpacity>
                 </HStack>
-
+                
                 <Heading size="md" color="#406755" marginLeft={2}>
                     SERVIÇOS
                 </Heading>
@@ -128,11 +136,11 @@ export default function Initial(){
                 <HStack w="100%" alignItems="center" justifyContent="space-between" safeArea >
                     
 
-                    <Box backgroundColor="#89BF9E" rounded="md" flexDir="row" padding={3} height={20} width={390}>
-
+                    <Box backgroundColor="#89BF9E" rounded="md" flexDir="row" padding={3} height={20} width={390} >
+                    
                     <TouchableOpacity 
                         onPress={ () => navigation.navigate('Agendamento')}>
-
+                                
                             <Icon 
                             as={Feather}
                             name="calendar"
@@ -144,7 +152,7 @@ export default function Initial(){
                         <Heading  fontSize='12px'>Agendamento</Heading>
                             
                         </TouchableOpacity> 
-
+                        
                         <TouchableOpacity>
 
                             <Icon 

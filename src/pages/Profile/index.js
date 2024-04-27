@@ -4,6 +4,8 @@ import * as Animatable from 'react-native-animatable'
 
 import {useNavigation} from '@react-navigation/native'
 
+
+/*Essa é a página de perfil do usuário */ 
 export default function Profile(){
     const navigation = useNavigation();
 

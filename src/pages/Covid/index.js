@@ -4,6 +4,8 @@ import * as Animatable from 'react-native-animatable'
 
 import {useNavigation} from '@react-navigation/native'
 
+
+/* Aqui será a página de informações do covid*/ 
 export default function Covid(){
     const navigation = useNavigation();
 
