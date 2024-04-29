@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView } from "react-native";
 import * as Animatable from 'react-native-animatable'
 
 import {useNavigation} from '@react-navigation/native'
 
-export default function Cadastro(){
+export default function Register2(){
     const navigation = useNavigation();
-   const [email, setEmail] = useState('');
-   const [senha, setSenha] = useState('');
     return (
-        <View style={styles.container}>            
+        <ScrollView>
+        <SafeAreaView style={styles.container}>            
 
            <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
             
@@ -21,42 +20,54 @@ export default function Cadastro(){
 
         
 
-        <Text style={styles.title}>E-mail</Text>
+        <Text style={styles.title}>Nome</Text>
             <TextInput
-            placeholder="Digite seu e-mail..."
-            onChangeText={setEmail}
+            placeholder="Digite seu nome completo..."
             style={styles.input}
             />
 
 
-        <Text style={styles.title}>Senha</Text>
+        <Text style={styles.title}>CPF</Text>
                 <TextInput
-                placeholder="Digite sua senha..."
+                placeholder="Digite seu CPF..."
                 style={styles.input}
                 />
         
-        <Text style={styles.title}>Repetir Senha</Text>
+        <Text style={styles.title}>Data de Nascimento</Text>
                 <TextInput
-                placeholder="Digite sua senha..."
+                placeholder="dd/mm/aaaa"
                 style={styles.input}
-                onChangeText={setSenha}
+                />
+        
+        <Text style={styles.title}>Cadastro SUS</Text>
+                <TextInput
+                placeholder="Digite seu cartão SUS..."
+                style={styles.input}
                 />
 
-        <TouchableOpacity style={styles.button} 
-        onPress={ () => navigation.navigate('Cadastro2', {email, senha})}>
-            <Text style={styles.buttonText}>Prosseguir</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Endereço</Text>
+                <TextInput
+                placeholder="Digite seu endereço..."
+                style={styles.input}
+                />
+
+         <Text style={styles.title}>Unidade de Saúde</Text>
+                <TextInput
+                placeholder="Digite sua UBS..."
+                style={styles.input}
+                />
 
         <TouchableOpacity 
-        style={styles.buttonRegister} 
+        style={styles.button}
         onPress={ () => navigation.navigate('SignIn')}
         >
-            <Text style={styles.registerText}>Já possui conta? Entre aqui!</Text>
+            <Text style={styles.buttonText}>Finalizar Cadastro</Text>
         </TouchableOpacity>
 
         </Animatable.View>
 
-        </View>
+        </SafeAreaView>
+        </ScrollView>
        
     );
 }
@@ -111,6 +122,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         paddingVertical: 8,
         marginTop: 14,
+        marginBottom:14,
         justifyContent: 'center',
         alignItems: 'center',
     },

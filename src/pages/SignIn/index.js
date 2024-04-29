@@ -3,26 +3,58 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } fro
 import * as Animatable from 'react-native-animatable'
 import api from '../../services/api'
 import {useNavigation} from '@react-navigation/native'
-
 export default function SignIn(){
     const navigation = useNavigation();
     const [email, setEmail] = useState(''); //armazena os valores de email
     const [senha, setSenha] = useState('');// armazena os valores de senha
+ 
     //função para realizar o login
     async function login(){
         //variavel para guardar o formato enviado para a api
         let json ={
-            "usuario":email,
+            "email":email,
             "senha":senha
         }
-        try {
-            await api.post('/session', json).then(response => {
-                Alert.alert("Login realizado com sucesso!");
-            })
-        } catch (error) {
-            Alert.alert(error)
+        let login_valido =  await lerDados(json);
+        if(login_valido == 1){
+            //chama proxima tela
+
+        }else{
+            //mensagem de erro
+            Alert.alert("Login ou senha invalidos!")
         }
     }
+    async function lerDados(dado){
+        let retorno = -1;
+        try {
+            await api.post('session',dado);
+            
+        } catch (error) {
+            console.log("Algo deu errado:", error);
+        }
+    }
+    /*async function lerDadosTeste(dado){
+        let retorno = -1;
+        try {
+            //let json = await fs.readFileSync('arquivoTeste.json', 'utf8');
+            let path = RNFS.DocumentDirectoryPath + '/arquivoTeste.json';
+            await RNFS.readFile(path, 'utf8').then(resultado =>{
+                let obj = JSON.parse(resultado);
+                if((obj.senha == dado.senha) && (obj.email == dado.email)){
+                    retorno = 1;
+                }else{
+                    retorno = 0;
+
+                }
+            })
+            //let json = fs.readFileAssets()
+        } catch (error) {
+            console.log(error)
+        }
+       
+        return retorno;
+        
+    }*/
     return (
         <View style={styles.container}>            
 

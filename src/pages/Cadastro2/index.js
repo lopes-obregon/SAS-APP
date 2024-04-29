@@ -1,11 +1,56 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView, Alert } from "react-native";
 import * as Animatable from 'react-native-animatable'
-
 import {useNavigation} from '@react-navigation/native'
-
-export default function Cadastro2(){
+import RNFS from "react-native-fs";
+export default function Cadastro2(props){
     const navigation = useNavigation();
+    const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [data_nascimento, setDataNascimento] = useState('');
+    const [cadastro_sus, setCadastroSus] = useState('');
+    const [endereco, setEndereco] = useState('');
+    const [unidade_de_saude, setUnidadeDeSaude] = useState('');
+    const {email, senha} = props;
+    async function cadastro(){
+        let cadastro = salvarDadosTeste();
+        try {
+           if(cadastro == 1){
+                Alert.alert('Cadastro realizado com sucesso!');
+                navigation.navigate('SignIn');
+           }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function salvarDadosTeste(){
+        let data = {
+            nome:nome,
+            cpf:cpf,
+            data_nascimento:data_nascimento,
+            cadastro_sus:cadastro_sus,
+            endereco:endereco,
+            unidade_de_saude:unidade_de_saude,
+            email:email,
+            senha:senha
+        }
+        let json_salvar = JSON.stringify(data,null,2);
+        let retorno = -1;
+        let path = RNFS.DownloadDirectoryPath + '/arquivoTeste.json'
+        try {
+            RNFS.writeFile(path, json_salvar, 'utf8').then(()=>{
+                retorno = 1;
+
+            });
+            //await fs.writeFileSync('arquivoTeste.json', json_salvar);
+            
+        } catch (error) {
+            console.log(error)    
+            retorno = 0;        
+        }
+        return retorno;
+
+    }
     return (
         <ScrollView>
         <SafeAreaView style={styles.container}>            
@@ -24,6 +69,7 @@ export default function Cadastro2(){
             <TextInput
             placeholder="Digite seu nome completo..."
             style={styles.input}
+            onChangeText={setNome}
             />
 
 
@@ -31,35 +77,40 @@ export default function Cadastro2(){
                 <TextInput
                 placeholder="Digite seu CPF..."
                 style={styles.input}
+                onChangeText={setCpf}
                 />
         
         <Text style={styles.title}>Data de Nascimento</Text>
                 <TextInput
                 placeholder="dd/mm/aaaa"
                 style={styles.input}
+                onChangeText={setDataNascimento}
                 />
         
         <Text style={styles.title}>Cadastro SUS</Text>
                 <TextInput
                 placeholder="Digite seu cartão SUS..."
                 style={styles.input}
+                onChangeText={setCadastroSus}
                 />
 
         <Text style={styles.title}>Endereço</Text>
                 <TextInput
                 placeholder="Digite seu endereço..."
                 style={styles.input}
+                onChangeText={setEndereco}
                 />
 
          <Text style={styles.title}>Unidade de Saúde</Text>
                 <TextInput
                 placeholder="Digite sua UBS..."
                 style={styles.input}
+                onChangeText={setUnidadeDeSaude}
                 />
 
         <TouchableOpacity 
         style={styles.button}
-        onPress={ () => navigation.navigate('SignIn')}
+        onPress={cadastro}
         >
             <Text style={styles.buttonText}>Finalizar Cadastro</Text>
         </TouchableOpacity>
