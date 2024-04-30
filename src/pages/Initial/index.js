@@ -5,7 +5,7 @@ import { NativeBaseProvider, Box, HStack, Pressable, Icon, Center, Heading } fro
 import {Link, useNavigation} from '@react-navigation/native'
 import { Feather } from '@expo/vector-icons'
 import {LinearGradient} from 'expo-linear-gradient'
-
+import api from '../../services/api';
 
 /*Aqui é a configuração do gradiente do background*/
 const config = {
@@ -13,11 +13,13 @@ const config = {
         'linear-gradient': LinearGradient
     }
 }
-
 /* Essa é a página inicial do usuário */ 
-export default function Initial(){
+export default function Initial(props){
     const navigation = useNavigation();
-
+    //let login = props.route.params;
+    let { nome } = props.route.params;
+    //console.log("user:", nome);
+    //console.log("props:", props.route.params);
     return(
     /* O ScrolView é a barra de rolagem */
     <ScrollView>
@@ -51,7 +53,7 @@ export default function Initial(){
                         
                        
                     <Heading marginLeft={4} size="sm" 
-                    color="#408755">OLÁ SR(a) PACIENTE!</Heading>
+                    color="#408755">OLÁ SR(a) { nome  }!</Heading>
                         
                         
                     </Box>

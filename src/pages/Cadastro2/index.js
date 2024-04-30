@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView, Alert } from "react-native";
 import * as Animatable from 'react-native-animatable'
 import {useNavigation} from '@react-navigation/native'
-import RNFS from "react-native-fs";
+import api from "../../services/api";
 export default function Cadastro2(props){
     const navigation = useNavigation();
     const [nome, setNome] = useState('');
@@ -11,19 +11,44 @@ export default function Cadastro2(props){
     const [cadastro_sus, setCadastroSus] = useState('');
     const [endereco, setEndereco] = useState('');
     const [unidade_de_saude, setUnidadeDeSaude] = useState('');
-    const {email, senha} = props;
+    const {email, senha} = props.route.params;
+    //console.log("props:", props.route);
     async function cadastro(){
-        let cadastro = salvarDadosTeste();
+        let cadastro = await salvarDados();
         try {
-           if(cadastro == 1){
+           if(cadastro == true){
                 Alert.alert('Cadastro realizado com sucesso!');
                 navigation.navigate('SignIn');
+            }else{
+               Alert.alert('Parece que algo deu errado!');
            }
         } catch (error) {
             console.log(error);
         }
     }
-    async function salvarDadosTeste(){
+    async function salvarDados(){
+        let cadastro_sucesso = false;
+        let dados = {
+            usuario:email,
+            senha:senha,
+            nome:nome,
+            cpf:cpf,
+            data_nascimento:data_nascimento,
+            cadastro_sus:cadastro_sus,
+            endereco:endereco,
+            unidade_saude:unidade_de_saude
+        }
+        try {
+            console.log(dados);
+            await api.post('users', dados).then(()=> cadastro_sucesso = true);
+        } catch (error) {
+            console.log("Algo deu errado:",error)
+        }finally{
+            return cadastro_sucesso;
+        }
+
+    }
+   /* async function salvarDadosTeste(){
         let data = {
             nome:nome,
             cpf:cpf,
@@ -50,7 +75,7 @@ export default function Cadastro2(props){
         }
         return retorno;
 
-    }
+    }*/
     return (
         <ScrollView>
         <SafeAreaView style={styles.container}>            

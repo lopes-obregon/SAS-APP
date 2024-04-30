@@ -30,6 +30,7 @@ google-services.json
 *.hprof
 node_modules
 .expo
-
+android
+%ProgramData%
 #outros 
-.\package-lock.json
+package-lock.json

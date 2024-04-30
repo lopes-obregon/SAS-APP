@@ -24,7 +24,7 @@ export default function Cadastro(){
         <Text style={styles.title}>E-mail</Text>
             <TextInput
             placeholder="Digite seu e-mail..."
-            onChangeText={setEmail}
+            onChangeText={text => setEmail(text)}
             style={styles.input}
             />
 
@@ -39,7 +39,7 @@ export default function Cadastro(){
                 <TextInput
                 placeholder="Digite sua senha..."
                 style={styles.input}
-                onChangeText={setSenha}
+                onChangeText={text => setSenha(text)}
                 />
 
         <TouchableOpacity style={styles.button} 

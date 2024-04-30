@@ -12,23 +12,31 @@ export default function SignIn(){
     async function login(){
         //variavel para guardar o formato enviado para a api
         let json ={
-            "email":email,
+            "usuario":email,
             "senha":senha
         }
         let login_valido =  await lerDados(json);
-        if(login_valido == 1){
+        if(login_valido == true){
             //chama proxima tela
-
+            console.log("Login válido!");
+           //let teste = (await api.put('users', json)).data;
+            
+            //console.log("teste:", teste);
+            let user = await (await api.put('users', json)).data;
+            navigation.navigate("Initial", user);
         }else{
             //mensagem de erro
             Alert.alert("Login ou senha invalidos!")
         }
     }
     async function lerDados(dado){
-        let retorno = -1;
+        let retorno = false;
         try {
-            await api.post('session',dado);
-            
+            let response = await api.post('session',dado);
+            if(response.data == true) {
+                retorno = true;
+            }
+            return retorno;
         } catch (error) {
             console.log("Algo deu errado:", error);
         }
