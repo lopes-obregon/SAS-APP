@@ -14,12 +14,15 @@ export default function Cadastro2(props){
     const {email, senha} = props.route.params;
     //console.log("props:", props.route);
     async function cadastro(){
+        //aguarda resposta com verdadeiro ou falso
         let cadastro = await salvarDados();
         try {
            if(cadastro == true){
+            //caso verdadeiro apresenta mensagem na tela e chama pag 'SignIn'
                 Alert.alert('Cadastro realizado com sucesso!');
                 navigation.navigate('SignIn');
             }else{
+                //caso contrario apresenta mensagem na tela de error
                Alert.alert('Parece que algo deu errado!');
            }
         } catch (error) {
@@ -27,6 +30,10 @@ export default function Cadastro2(props){
         }
     }
     async function salvarDados(){
+        /*
+        *método responsavel por armazenar dados em um json;
+        *realizar a operação no banco esperar o retorno de cadastro sucesso e devolver verdadeiro ou falso;
+        */
         let cadastro_sucesso = false;
         let dados = {
             usuario:email,
