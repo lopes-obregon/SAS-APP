@@ -13,6 +13,7 @@ import Register2 from "../pages/Register2";
 import Agendamento from "../pages/Agendamento";
 import Covid from "../pages/Covid";
 import Vacine from "../pages/Vacine";
+import Agendamento2 from "../pages/Agendamento2";
 
 
 const Tab = createBottomTabNavigator();
@@ -88,6 +89,19 @@ function Tabs(){
         }}
         
      />
+
+<Tab.Screen
+         name="Agendamento"
+         component={Agendamento}
+         options={{headerShown: false,
+         tabBarIcon: ({color, size, focused}) => {
+            if(focused){
+                return <Ionicons name="calendar" size={size} color={color}/>
+            }
+            return <Ionicons name="home-outline" size={size} color={color}/>
+         }
+        }}
+         />
  
      </Tab.Navigator>
  
@@ -135,6 +149,12 @@ function Routes(){
         options={{headerShown: false}}
     />
     
+    <Stack.Screen
+        name="Agendamento2"
+        component={Agendamento2}
+        options={{headerShown: false}}
+    />
+
     <Stack.Screen
         name="Covid"
         component={Covid}
