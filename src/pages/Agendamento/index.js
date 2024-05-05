@@ -6,6 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient'
 import Agendamento2 from "../Agendamento2";
+import Initial from "../Initial";
 
 
 /*Aqui é a configuração do gradiente do background*/
@@ -40,6 +41,7 @@ export default function Agendamento(){
                                         color="#408755"
                                         />   
                             </TouchableOpacity>
+
                             <Heading marginLeft={4} size="lg" 
                                 color="#408755">Pré Agendamento</Heading>
                                     
@@ -47,7 +49,7 @@ export default function Agendamento(){
 
                         
                         
-                        <Box  marginTop={5} marginLeft={3} align="center" backgroundColor="#FFFFFF" borderRadius={30} width={350} height={110}>  
+                        <Box  marginTop={5} marginLeft={3} align="center" backgroundColor="#FFFFFF" borderRadius={30} width={360} height={110}>  
                             <Box flexDir="row">
                                         <Image marginLeft={15}
                                         marginTop={10} borderRadius={30}
@@ -73,26 +75,7 @@ export default function Agendamento(){
 
                         </Box>
                         
-                        <Box>
-
-                            <Heading marginTop={10} marginLeft={3} size="md" 
-                            color="#408755">Pré Agendamento para:</Heading>
-
-                            <Text marginLeft={15} marginRight={5} style={styles.title}>Paciente</Text>
-                            <TextInput marginLeft={15} marginRight={5}
-                            placeholder="Digite o nome completo do paciente..."
-                            style={styles.input}
-                            />
-
-
-                            <Text marginLeft={15} marginRight={5} style={styles.title}>Cartão SUS</Text>
-                            <TextInput marginLeft={15} marginRight={5}
-                            placeholder="Digite o cartão SUS do paciente..."
-                            style={styles.input}
-                            />
-                        </Box>
-
-                        <Text  marginLeft={15} style={styles.title}>Quem é o Paciente ?</Text>
+                        <Text  marginLeft={15} style={styles.title} >Quem é o Paciente ?</Text>
                         <Box flexDir="row">
                         
                         <TouchableOpacity>
@@ -108,7 +91,7 @@ export default function Agendamento(){
 
                         <TouchableOpacity>
         
-                        <Image marginLeft={15} marginBottom={150}
+                        <Image marginLeft={15} marginBottom={2}
                                         marginTop={10} borderRadius={30}
                                         
                                         source={require('../../assets/filho.png')}
@@ -117,6 +100,27 @@ export default function Agendamento(){
                                         />
                         </TouchableOpacity>
                         </Box>
+
+                        <Box marginBottom={150}>
+
+                            <Heading marginTop={2} marginLeft={3} style={styles.title}  
+                            color="#408755">Dados do Paciente</Heading>
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Paciente</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o nome completo do paciente..."
+                            style={styles.input}
+                            />
+
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Cartão SUS</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o cartão SUS do paciente..."
+                            style={styles.input}
+                            />
+                        </Box>
+
+                       
 
                         <TouchableOpacity 
                 style={styles.button}
@@ -136,7 +140,14 @@ const styles = StyleSheet.create({
     title:{
         fontWeight: 'bold',
         color: '#408755',
-        fontSize:15,
+        fontSize:20,
+        marginTop: 30,
+    },
+
+    title2:{
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize:18,
         marginTop: 30,
     },
 
