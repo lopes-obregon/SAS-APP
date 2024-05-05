@@ -12,7 +12,7 @@ export default function Profile(){
     return(
 
             
-    <Text>Página de Agendamento2</Text>
+    <Text>Página de Perfil</Text>
         
    
     );
