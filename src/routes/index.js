@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack"
 
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
-import Initial from "../pages/Initial";
+import Home from "../pages/Home";
 import Chat from "../pages/Chat";
 import Profile from "../pages/Profile";
 import {Ionicons} from '@expo/vector-icons'
@@ -48,7 +48,7 @@ function Tabs(){
         
         <Tab.Screen
          name="Início"
-         component={Initial}
+         component={Home}
          options={{headerShown: false,
          tabBarIcon: ({color, size, focused}) => {
             if(focused){
@@ -138,7 +138,7 @@ function Routes(){
         />
 
     <Stack.Screen
-        name="Initial"
+        name="Home"
         component={Tabs}
         options={{headerShown: false}}
     />

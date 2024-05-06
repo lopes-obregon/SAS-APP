@@ -15,7 +15,7 @@ const config = {
 }
 
 /* Essa é a página inicial do usuário */ 
-export default function Initial(){
+export default function Home(){
     const navigation = useNavigation();
 
     return(

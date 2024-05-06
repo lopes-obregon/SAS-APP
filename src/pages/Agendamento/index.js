@@ -5,8 +5,7 @@ import * as Animatable from 'react-native-animatable';
 import { Feather } from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient'
-import Agendamento2 from "../Agendamento2";
-import Initial from "../Initial";
+
 
 
 /*Aqui é a configuração do gradiente do background*/
@@ -33,7 +32,7 @@ export default function Agendamento(){
                     
                         <Box rounded="md" flexDir="row" alignItems="center">
                             <TouchableOpacity
-                                    onPress={ () => navigation.navigate('Initial')}>
+                                    onPress={ () => navigation.navigate('Home')}>
                                     <Icon 
                                         as={Feather}
                                         name="chevron-left"
