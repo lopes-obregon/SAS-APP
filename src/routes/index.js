@@ -14,6 +14,7 @@ import Agendamento from "../pages/Agendamento";
 import Covid from "../pages/Covid";
 import Vacine from "../pages/Vacine";
 import Agendamento2 from "../pages/Agendamento2";
+import ChatApp from "../pages/ChatApp";
 
 
 const Tab = createBottomTabNavigator();
@@ -61,7 +62,7 @@ function Tabs(){
         
          <Tab.Screen
          name="Chat"
-         component={Chat}
+         component={ChatApp}
          options={{headerShown: false,
             tabBarIcon: ({color, size, focused}) => {
                 if(focused){
@@ -169,6 +170,7 @@ function Routes(){
 
 
     </Stack.Navigator>
+    
 
    )
     
