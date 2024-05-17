@@ -81,8 +81,8 @@ const config = {
           maxHeight={300}
           labelField="label"
           valueField="value"
-          placeholder={!isFocus ? 'Select item' : '...'}
-          searchPlaceholder="Search..."
+          placeholder={!isFocus ? 'Selecione sua região' : '...'}
+          searchPlaceholder="Pesquise..."
           value={value}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
