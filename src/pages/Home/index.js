@@ -96,7 +96,7 @@ export default function Home(){
                 
                 <HStack  w="100%" alignItems="center" justifyContent="space-between" safeArea>
                     <TouchableOpacity
-                    onPress={ () => navigation.navigate('Vacine')}>
+                    onPress={ () => navigation.navigate('Feed')}>
                         <Box rounded="md" flexDir="row"  padding={5} backgroundColor="#408755" borderRadius={30} height={163} width={380} >
                             
                         

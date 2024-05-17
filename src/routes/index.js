@@ -12,9 +12,9 @@ import Register from "../pages/Register";
 import Register2 from "../pages/Register2";
 import Agendamento from "../pages/Agendamento";
 import Covid from "../pages/Covid";
-import Vacine from "../pages/Vacine";
 import Agendamento2 from "../pages/Agendamento2";
 import ChatApp from "../pages/ChatApp";
+import Feed from "../pages/Feed";
 
 
 const Tab = createBottomTabNavigator();
@@ -163,8 +163,8 @@ function Routes(){
     />
 
     <Stack.Screen
-            name="Vacine"
-            component={Vacine}
+            name="Feed"
+            component={Feed}
             options={{headerShown: false}}
         />
 
