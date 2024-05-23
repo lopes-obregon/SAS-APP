@@ -14,11 +14,16 @@ import Agendamento from "../pages/Agendamento";
 import Agendamento2 from "../pages/Agendamento2";
 import Covid from "../pages/Covid";
 import Feed from "../pages/Feed";
+import { useRoute } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function Tabs() {
+    const route = useRoute();
+    let user = route.params?.params?.user;
+    console.log("Dentro da USER:",user);
+    
     return (
         <Tab.Navigator
             screenOptions={{
@@ -69,7 +74,7 @@ function Tabs() {
             />
             <Tab.Screen
                 name="Perfil"
-                component={Profile}
+                
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size, focused }) => (
@@ -80,21 +85,8 @@ function Tabs() {
                         />
                     ),
                 }}
-            />
-            <Tab.Screen
-                name="Agendamento"
-                component={Agendamento}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? "calendar" : "calendar-outline"}
-                            size={size}
-                            color={color}
-                        />
-                    ),
-                }}
-            />
+            >{() => <Profile user={user}  />}</Tab.Screen>
+           
         </Tab.Navigator>
     );
 }
@@ -106,8 +98,7 @@ function Routes() {
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Register2" component={Register2} />
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name='Tabs' component={Tabs}/>{/* Tela das abas */}
+            <Stack.Screen name="Home" component={Tabs} />
             <Stack.Screen name="Agendamento" component={Agendamento} />
             <Stack.Screen name="Agendamento2" component={Agendamento2} />
             <Stack.Screen name="Covid" component={Covid} />
@@ -116,4 +107,7 @@ function Routes() {
     );
 }
 
+//<Stack.Screen name='Tabs' component={Tabs}/>{/* Tela das abas */}
+
+/** */
 export default Routes;

@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, Touchable, Title, FlatList } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, Touchable, Title, FlatList, Alert } from "react-native";
 import {Icon, NativeBaseProvider, Heading, Box, Center} from 'native-base';
 import * as Animatable from 'react-native-animatable'
-import {useNavigation} from '@react-navigation/native'
+import {useNavigation, useRoute} from '@react-navigation/native'
 import {LinearGradient} from 'expo-linear-gradient'
 import { Feather } from '@expo/vector-icons';
 import { Calendar, Agenda, CalendarList, AgendaList } from "react-native-calendars";
@@ -17,9 +17,23 @@ const config = {
 }
 
 /*Essa é a página de perfil do usuário */ 
-export default function Profile(){
+export default function Profile(props){
     const navigation = useNavigation();
-
+    let user = props?.user;
+    console.log("Profile:",props.user);
+    //dividir a data em variar partes
+    let parts_str_data_nascimetno= user?.data_nascimento.split("/");
+    //pegando a ultima parte da matriz gerada onde se localiza o ano
+    let ano_str= parts_str_data_nascimetno[2];
+    //obtendo o ano atual
+    let ano_atual = new Date().getFullYear();
+    //converte a string em um inteiro
+    let ano_usuario = parseInt(ano_str);
+    // idade do usuario 
+    let idade_usuario = ano_atual - ano_usuario;
+    //losgs
+    console.log("data usuario:", ano_usuario);
+    console.log("Ano atual:", ano_atual);
     return(
 
         
@@ -34,7 +48,7 @@ export default function Profile(){
                 {/* Seta para voltar */}
                     <Box rounded="md" flexDir="row" alignItems="center">
                         <TouchableOpacity
-                                onPress={ () => navigation.navigate('Home')}>
+                                onPress={ () => navigation.navigate('Home',{screen:'Início', params:{'user': user}})}>
                                 <Icon 
                                     as={Feather}
                                     name="chevron-left"
@@ -59,14 +73,13 @@ export default function Profile(){
 
                     {/* Informações perfil */}
                    <Box style={styles.infoContainer}>
-                    <Text style={[styles.title, {fontWeight:"500", fontSize: 36 }]}>Paciente da Silva</Text>
-                    <Text style={[styles.title, {fontWeight:"300", fontSize: 20 }]}>30 anos, UBS VILA ROSA</Text>
+                    <Text style={[styles.title, {fontWeight:"500", fontSize: 36 }]}>Paciente {user?.nome}</Text>
+                    <Text style={[styles.title, {fontWeight:"300", fontSize: 20 }]}>{idade_usuario} anos, {user?.endereco}</Text>
                    
                    </Box>
 
                    <Box marginTop={30}>
-                   <TouchableOpacity style={styles.button}
-                    onPress={ () => navigation.navigate('')}>
+                   <TouchableOpacity style={styles.button}>
                         <Text style={styles.buttonText}>Visualizar informações pessoais</Text>
                     </TouchableOpacity>
                    </Box>

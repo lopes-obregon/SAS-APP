@@ -9,17 +9,14 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [loading, setLoading] = useState(false);
-    // Função para realizar o login
+
     async function login() {
         if (!email || !senha) {
             Alert.alert("Por favor, preencha todos os campos.");
             return;
         }
 
-        const json = {
-            "usuario": email,
-            "senha": senha
-        };
+        const json = { "usuario": email, "senha": senha };
 
         setLoading(true);
         const login_valido = await lerDados(json);
@@ -29,8 +26,8 @@ export default function SignIn() {
             console.log("Login válido!");
             try {
                 let resultado_servidor = await api.put('users', json);
-                console.log("Resultado do servidor:", resultado_servidor.data)
-                navigation.navigate('Home', { "user": resultado_servidor.data});
+                console.log("Resultado do servidor:", resultado_servidor.data);
+                navigation.navigate('Home',{ screen:'Início', params: {"user": resultado_servidor.data} });
             } catch (error) {
                 console.log("Erro ao buscar dados do usuário:", error);
                 Alert.alert("Erro ao buscar dados do usuário.");
@@ -63,7 +60,6 @@ export default function SignIn() {
                     style={{ width: '100%' }}
                     resizeMode="contain"
                 />
-
                 <Text style={styles.title}>E-mail</Text>
                 <TextInput
                     placeholder="Digite seu e-mail..."
@@ -73,7 +69,6 @@ export default function SignIn() {
                     keyboardType="email-address"
                     autoCapitalize="none"
                 />
-
                 <Text style={styles.title}>Senha</Text>
                 <TextInput
                     placeholder="Digite sua senha..."
@@ -82,7 +77,6 @@ export default function SignIn() {
                     value={senha}
                     secureTextEntry
                 />
-
                 <TouchableOpacity style={styles.button} onPress={login} disabled={loading}>
                     {loading ? (
                         <ActivityIndicator size="small" color="#FFF" />
@@ -90,11 +84,7 @@ export default function SignIn() {
                         <Text style={styles.buttonText}>Entrar</Text>
                     )}
                 </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.buttonRegister}
-                    onPress={() => navigation.navigate('Register')}
-                >
+                <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate('Register')}>
                     <Text style={styles.registerText}>Não possui conta? Cadastre-se!</Text>
                 </TouchableOpacity>
             </Animatable.View>

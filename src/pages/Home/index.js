@@ -16,8 +16,11 @@ const config = {
 export default function Home() {
     const navigation = useNavigation();
     const route = useRoute();
-    let user = route.params.user
-    console.log("Dados do usuário recebidos:", user.nome);
+    const user = route.params?.user;
+    const vaiParaProfile = ()=>{
+        navigation.navigate('Perfil', {"user":user})
+    };
+    console.log("Dados do usuário recebidos:", user?.nome);
 
     return (
         // ScrollView é a barra de rolagem
@@ -38,7 +41,7 @@ export default function Home() {
                                     color="#408755"
                                 />
                             </TouchableOpacity>
-                            <Heading marginLeft={4} size="sm" color="#408755">OLÁ SR(a) {user.nome}!</Heading>
+                            <Heading marginLeft={4} size="sm" color="#408755">OLÁ SR(a) {user?.nome}!</Heading>
                         </Box>
                         <Box rounded="md" flexDir="row" alignItems="center">
                             <TouchableOpacity onPress={() => navigation.navigate('Chat')}>

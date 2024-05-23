@@ -161,7 +161,7 @@ export default function Agendamento(){
 
                         <TouchableOpacity 
                 style={styles.button}
-                onPress={ () => navigation.navigate('Agendamento2', {nome_paciente, cartão_sus})}
+                onPress={ () => navigation.navigate('Agendamento2', {nome_paciente, cartão_sus, user})}
                 >
                     <Text style={styles.buttonText}>PRÓXIMO</Text>
                 </TouchableOpacity>

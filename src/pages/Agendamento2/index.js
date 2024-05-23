@@ -22,7 +22,8 @@ export default function Agendamento2(){
     const navigation = useNavigation();
     //args da rota
     const route = useRoute();
-    const { cartão_sus, nome_paciente } = route.params;
+    const { cartão_sus, nome_paciente, user } = route.params;
+    console.log(user);
     //variavel para armazenar a data no formato yyyy-mm-dd
     let data = "";
     //variavel para armazenar horas minutos
@@ -45,7 +46,7 @@ export default function Agendamento2(){
             try{
                         await api.post('agendamento', json).then(reslt=>{
                             Alert.alert(reslt.data);
-                            navigation.navigate('Home');
+                            navigation.navigate('Home',{ screen:'Início', params: {"user": user} });
                         } );
 
             }catch(err){
@@ -69,7 +70,7 @@ export default function Agendamento2(){
                 
                     <Box rounded="md" flexDir="row" alignItems="center">
                         <TouchableOpacity
-                                onPress={ () => navigation.navigate('Agendamento')}>
+                                onPress={ () => navigation.navigate('Agendamento', {"user": user})}>
                                 <Icon 
                                     as={Feather}
                                     name="chevron-left"

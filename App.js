@@ -16,5 +16,3 @@ export default function App() {
         
   );
 }
-
->>>>>>> 1e6c3383b386d85b01be759f5f13ee819cf3265f
