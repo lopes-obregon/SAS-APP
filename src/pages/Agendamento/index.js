@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
 import {Icon, NativeBaseProvider, Heading, Box, Center} from 'native-base';
 import * as Animatable from 'react-native-animatable';
 import { Feather } from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient'
-import Agendamento2 from "../Agendamento2";
+
 
 
 /*Aqui é a configuração do gradiente do background*/
@@ -17,8 +17,14 @@ const config = {
 
 /* Aqui será a página de agendamento*/ 
 export default function Agendamento(){
+    //variavel para mudança de estado dos dados inseridos
+    const [nome_paciente, setNomePaciente] = useState('');
+    const [cartão_sus, setCartãoSus] = useState('');
+    //variavel condicional para renderização do estado em qual o usuario vai clicar
+    const [is_clicou, setIsClicou] = useState(false);
     const navigation = useNavigation();
-
+    const route = useRoute();
+    let user = route.params.user;
     return(
         <ScrollView> 
             <NativeBaseProvider config={config}>
@@ -32,7 +38,7 @@ export default function Agendamento(){
                     
                         <Box rounded="md" flexDir="row" alignItems="center">
                             <TouchableOpacity
-                                    onPress={ () => navigation.navigate('Initial')}>
+                                    onPress={ () => navigation.navigate('Home')}>
                                     <Icon 
                                         as={Feather}
                                         name="chevron-left"
@@ -40,6 +46,7 @@ export default function Agendamento(){
                                         color="#408755"
                                         />   
                             </TouchableOpacity>
+
                             <Heading marginLeft={4} size="lg" 
                                 color="#408755">Pré Agendamento</Heading>
                                     
@@ -47,7 +54,7 @@ export default function Agendamento(){
 
                         
                         
-                        <Box  marginTop={5} marginLeft={3} align="center" backgroundColor="#FFFFFF" borderRadius={30} width={350} height={110}>  
+                        <Box  marginTop={5} marginLeft={3} align="center" backgroundColor="#FFFFFF" borderRadius={30} width={360} height={110}>  
                             <Box flexDir="row">
                                         <Image marginLeft={15}
                                         marginTop={10} borderRadius={30}
@@ -73,29 +80,14 @@ export default function Agendamento(){
 
                         </Box>
                         
-                        <Box>
-
-                            <Heading marginTop={10} marginLeft={3} size="md" 
-                            color="#408755">Pré Agendamento para:</Heading>
-
-                            <Text marginLeft={15} marginRight={5} style={styles.title}>Paciente</Text>
-                            <TextInput marginLeft={15} marginRight={5}
-                            placeholder="Digite o nome completo do paciente..."
-                            style={styles.input}
-                            />
-
-
-                            <Text marginLeft={15} marginRight={5} style={styles.title}>Cartão SUS</Text>
-                            <TextInput marginLeft={15} marginRight={5}
-                            placeholder="Digite o cartão SUS do paciente..."
-                            style={styles.input}
-                            />
-                        </Box>
-
-                        <Text  marginLeft={15} style={styles.title}>Quem é o Paciente ?</Text>
+                        <Text  marginLeft={15} style={styles.title} >Quem é o Paciente ?</Text>
                         <Box flexDir="row">
                         
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{
+                            setCartãoSus(user.cadastro_sus);
+                            setNomePaciente(user.nome);
+                            setIsClicou(true);
+                        }}>
         
                         <Image marginLeft={15}
                                         marginTop={10} borderRadius={30}
@@ -106,9 +98,13 @@ export default function Agendamento(){
                                         />
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{
+                            setIsClicou(false);
+                            setCartãoSus('');
+                            setNomePaciente('');
+                        }}>
         
-                        <Image marginLeft={15} marginBottom={150}
+                        <Image marginLeft={15} marginBottom={2}
                                         marginTop={10} borderRadius={30}
                                         
                                         source={require('../../assets/filho.png')}
@@ -117,10 +113,55 @@ export default function Agendamento(){
                                         />
                         </TouchableOpacity>
                         </Box>
+                        {is_clicou ? 
+                        <Box marginBottom={150}>
+
+                            <Heading marginTop={2} marginLeft={3} style={styles.title}  
+                            color="#408755">Dados do Paciente</Heading>
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Paciente</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o nome completo do paciente..."
+                            style={styles.input}
+                            value={nome_paciente}
+                            />
+
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Cartão SUS</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o cartão SUS do paciente..."
+                            style={styles.input}
+                            value={cartão_sus}
+                            />
+                        </Box>
+
+                        : 
+                        <Box marginBottom={150}>
+
+                            <Heading marginTop={2} marginLeft={3} style={styles.title}  
+                            color="#408755">Dados do Paciente</Heading>
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Paciente</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o nome completo do paciente..."
+                            style={styles.input}
+                            onChange={setNomePaciente}
+                            />
+
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Cartão SUS</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o cartão SUS do paciente..."
+                            style={styles.input}
+                            onChangeText={setCartãoSus}
+                            
+                            />
+                        </Box>
+                        }
 
                         <TouchableOpacity 
                 style={styles.button}
-                onPress={ () => navigation.navigate('Agendamento2')}
+                onPress={ () => navigation.navigate('Agendamento2', {nome_paciente, cartão_sus})}
                 >
                     <Text style={styles.buttonText}>PRÓXIMO</Text>
                 </TouchableOpacity>
@@ -136,7 +177,14 @@ const styles = StyleSheet.create({
     title:{
         fontWeight: 'bold',
         color: '#408755',
-        fontSize:15,
+        fontSize:20,
+        marginTop: 30,
+    },
+
+    title2:{
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize:18,
         marginTop: 30,
     },
 

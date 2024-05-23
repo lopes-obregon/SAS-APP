@@ -1,97 +1,88 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import * as Animatable from 'react-native-animatable'
+import * as Animatable from 'react-native-animatable';
+import { useNavigation } from '@react-navigation/native';
 
-import {useNavigation} from '@react-navigation/native'
-
-export default function Welcome(){
+export default function Welcome() {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-
             <View style={styles.containerLogo}>
                 <Animatable.Image
-                animation="flipInY"
+                    animation="flipInY"
                     source={require('../../assets/welcome.png')}
-                    style= {{width:'100%'}}
+                    style={styles.logo}
                     resizeMode="contain"
                 />
             </View>
 
             <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
-
-            <Image
+                <Image
                     source={require('../../assets/teste.png')}
-                    style= {{width:'100%'}}
+                    style={styles.image}
                     resizeMode="contain"
                 />
-
-                <Text style={styles.title}>O seu atendimento médico no conforto da sua casa</Text>
-                
+                <Text style={styles.title}>
+                    O seu atendimento médico {'\n'} no conforto da sua casa
+                </Text>
 
                 <TouchableOpacity 
-                style={styles.button}
-                onPress={ () => navigation.navigate('SignIn')}
+                    style={styles.button}
+                    onPress={() => navigation.navigate('SignIn')}
                 >
                     <Text style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>
-
             </Animatable.View>
-
-
         </View>
-       
     );
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor:"#408755",
+    container: {
+        flex: 1,
+        backgroundColor: "#408755",
     },
-    containerLogo:{
-        flex:0,
-        backgroundColor:"#408755",
+    containerLogo: {
+        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
-    containerForm:{
-        flex:1,
-        backgroundColor:"#FFF",
+    logo: {
+        width: '100%',
+    },
+    containerForm: {
+        flex: 1,
+        backgroundColor: "#FFF",
         borderTopLeftRadius: 25,
-        borderTopRightRadius:25,
+        borderTopRightRadius: 25,
         paddingStart: '5%',
         paddingEnd: '5%',
-
     },
-
-    title:{
-        fontSize:24,
-        color:'#408755',
+    image: {
+        width: '100%',
+    },
+    title: {
+        fontSize: 24,
+        color: '#408755',
         fontWeight: 'bold',
-        marginTop:28,
-        marginBottom:12,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
+        marginTop: 0,
+        marginBottom: 10,
+        textAlign: 'center',
     },
-    button:{
+    button: {
         position: 'absolute',
-        backgroundColor:'#408755',
-        borderRadius:50,
-        paddingVertical:8,
+        backgroundColor: '#408755',
+        borderRadius: 50,
+        paddingVertical: 5,
         width: '80%',
         alignSelf: 'center',
-        bottom:'15%',
+        bottom: '10%',
         alignItems: 'center',
-        justifyContent: 'center'
-
-
+        justifyContent: 'center',
     },
-    buttonText:{
+    buttonText: {
         fontSize: 30,
         fontWeight: 'bold',
         color: '#FFF',
     }
-
-})
+});
