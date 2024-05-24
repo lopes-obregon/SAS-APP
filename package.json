@@ -40,6 +40,7 @@
     "react-native-simple-modal": "^9.0.1",
     "react-native-svg": "14.1.0",
     "react-native-web": "~0.19.6",
+    "socket.io-client": "^4.7.5",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {

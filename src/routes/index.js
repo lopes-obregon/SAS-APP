@@ -60,7 +60,7 @@ function Tabs() {
             />
             <Tab.Screen
                 name="Chat"
-                component={ChatApp}
+                
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size, focused }) => (
@@ -71,7 +71,7 @@ function Tabs() {
                         />
                     ),
                 }}
-            />
+            >{()=> <ChatApp user={user}/>}</Tab.Screen>
             <Tab.Screen
                 name="Perfil"
                 
