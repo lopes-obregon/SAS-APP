@@ -98,6 +98,20 @@ export default function Agendamento(){
                                         
                                         />
                         </TouchableOpacity>
+
+
+
+                        <TouchableOpacity 
+                                    onPress={ () => navigation.navigate('Agendamento')}>
+                                    <Icon marginLeft={5} marginTop={12}
+                                        as={Feather}
+                                        name="user-plus"
+                                        size={7}
+                                        color="#408755"
+                                        />   
+                            </TouchableOpacity>
+
+
                         </Box>
 
                         <Box marginBottom={150}>
