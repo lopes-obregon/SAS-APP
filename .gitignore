@@ -131,3 +131,4 @@ dist
 %ProgramData%
 #android
 android
+package-lock.json

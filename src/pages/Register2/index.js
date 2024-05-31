@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView, Alert } from "react-native";
 import * as Animatable from 'react-native-animatable'
 
 import {useNavigation} from '@react-navigation/native'
@@ -25,6 +25,7 @@ export default function Register2(props){
             }else{
                 //caso contrario apresenta mensagem na tela de error
                Alert.alert('Parece que algo deu errado!');
+               
            }
         } catch (error) {
             console.log(error);
@@ -44,7 +45,7 @@ export default function Register2(props){
             data_nascimento:data_nascimento,
             cadastro_sus:cadastro_sus,
             endereco:endereco,
-            unidade_saude:unidade_de_saude
+            unidade_de_saude:unidade_de_saude
         }
         try {
             console.log(dados);
