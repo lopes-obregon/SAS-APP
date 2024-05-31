@@ -26,7 +26,8 @@ const config = {
   const Covid = () => {
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
-
+    const navigation = useNavigation();
+    
     const renderLabel = () => {
       if (value || isFocus) {
         return (

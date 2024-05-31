@@ -112,6 +112,20 @@ export default function Agendamento(){
                                         
                                         />
                         </TouchableOpacity>
+
+
+
+                        <TouchableOpacity 
+                                    onPress={ () => navigation.navigate('Agendamento')}>
+                                    <Icon marginLeft={5} marginTop={12}
+                                        as={Feather}
+                                        name="user-plus"
+                                        size={7}
+                                        color="#408755"
+                                        />   
+                            </TouchableOpacity>
+
+
                         </Box>
                         {is_clicou ? 
                         <Box marginBottom={150}>
@@ -158,6 +172,27 @@ export default function Agendamento(){
                             />
                         </Box>
                         }
+
+                        <Box marginBottom={150}>
+
+                            <Heading marginTop={2} marginLeft={3} style={styles.title}  
+                            color="#408755">Dados do Paciente</Heading>
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Paciente</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o nome completo do paciente..."
+                            style={styles.input}
+                            />
+
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Cartão SUS</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o cartão SUS do paciente..."
+                            style={styles.input}
+                            />
+                        </Box>
+
+                       
 
                         <TouchableOpacity 
                 style={styles.button}
