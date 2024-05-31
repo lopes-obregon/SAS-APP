@@ -23,7 +23,7 @@ export default function Agendamento2(){
     //args da rota
     const route = useRoute();
     const { cartão_sus, nome_paciente, user, filhos } = route.params;
-    console.log("filhos:",filhos)
+    console.log("filhos:",filhos);
     console.log(user);
     //variavel para armazenar a data no formato yyyy-mm-dd
     let data = "";
@@ -42,7 +42,8 @@ export default function Agendamento2(){
                 "cartão_sus":cartão_sus,
                 "nome":nome_paciente,
                 "data":data,
-                "hora":hora_minuto
+                "hora":hora_minuto,
+                "filhos": filhos
             }
             try{
                         await api.post('agendamento', json).then(reslt=>{
