@@ -22,7 +22,8 @@ export default function Agendamento2(){
     const navigation = useNavigation();
     //args da rota
     const route = useRoute();
-    const { cartão_sus, nome_paciente, user } = route.params;
+    const { cartão_sus, nome_paciente, user, filhos } = route.params;
+    console.log("filhos:",filhos)
     console.log(user);
     //variavel para armazenar a data no formato yyyy-mm-dd
     let data = "";
