@@ -182,7 +182,7 @@ export default function Agendamento(){
                         }
                        
 {
-    filhos.length > 1 ?
+    filhos.length >= 1 ?
     <TouchableOpacity 
                 style={styles.button}
                 onPress={ () => navigation.navigate('Agendamento2', {filhos, user})}
@@ -193,7 +193,7 @@ export default function Agendamento(){
     :
                         <TouchableOpacity 
                 style={styles.button}
-                onPress={ () => navigation.navigate('Agendamento2', {nome_paciente, cartão_sus, user})}
+                onPress={ () => navigation.navigate('Agendamento2', { user})}
                 >
                     <Text style={styles.buttonText}>PRÓXIMO</Text>
                 </TouchableOpacity>
