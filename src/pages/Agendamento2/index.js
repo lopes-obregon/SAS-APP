@@ -48,7 +48,7 @@ export default function Agendamento2(){
                                 
                     </Box>
 
-                    <Box  marginTop={5} align="center" backgroundColor="#FFFFFF" borderRadius={30} width={380} height={500}>
+                    <Box  marginTop={5} align="center" backgroundColor="#FFFFFF" borderRadius={30} width={380} height={530}>
                         <Box marginTop={5}>
                         <Calendar
                         onDayPress={day => {
@@ -96,7 +96,7 @@ export default function Agendamento2(){
 
                         </Box>
                     
-                        <Box marginTop={20}>
+                        <Box marginTop={16}>
                         <TouchableOpacity style={styles.button}
                         onPress={ () => navigation.navigate('Home')}
                         >

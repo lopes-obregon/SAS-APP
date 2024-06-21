@@ -67,7 +67,7 @@ function ChatApp() {
                 onChangeText={(text) => setInputMessage(text)}
               />
               <TouchableOpacity style={styles.sendButton} onPress={handleSendMessage}>
-                <Text style={styles.sendButtonText}>Send</Text>
+                <Text style={styles.sendButtonText}>Enviar</Text>
               </TouchableOpacity>
             </View>
           </>
