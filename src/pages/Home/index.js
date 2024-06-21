@@ -91,7 +91,7 @@ export default function Home() {
                                 </Box>
                                 <Box>
                                     <Image
-                                        source={{ uri: 'https://via.placeholder.com/150' }} // Adicione uma imagem real ou um placeholder
+                                        source={require('../../assets/initial.png')} // Adicione uma imagem real ou um placeholder
                                         style={{ width: 100, height: 100 }}
                                         resizeMode="contain"
                                     />
@@ -154,7 +154,7 @@ export default function Home() {
                     <TouchableOpacity onPress={() => navigation.navigate('Covid')}>
                         <Box alignSelf="center" marginTop={0} width={389} height={340} backgroundColor="#ECECEC" borderRadius={30} marginBottom={20}>
                             <Image
-                                source={{ uri: 'https://via.placeholder.com/300x200' }} // Adicione uma imagem real ou um placeholder
+                                source={require('../../assets/covid.png')} // Adicione uma imagem real ou um placeholder
                                 style={{ width: '100%', height: 200 }}
                                 resizeMode="contain"
                             />

@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import { Calendar } from "react-native-calendars";
 import api from "../../services/api";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 //variavel global
 var json_datas = undefined;
 var is_executou = false;
@@ -111,7 +111,21 @@ export default function Agendamento2() {
                 "filhos": filhos
             };
             console.log("objeto final:", json);
+            let data_array = data.split('-');
+            let data_str = `${data_array[2]}-${data_array[1]}-${data_array[0]}`;
+            let data_hora_str = `Você tem um agendamento para o dia ${data_str} às ${hora_minuto}`;
+            try{
+                //salvar dados locais
+                await AsyncStorage.setItem("agendamento", data_hora_str).then(()=>{
+                    console.log("Dados salvos");
+                });
+                
+
+            }catch(err){
+                console.log("error ao salvar dados para notificação:", err);
+            }
             try {
+
                 await api.post('agendamento', json).then(reslt => {
                     Alert.alert(reslt.data);
                     navigation.navigate('Home', { screen: 'Início', params: { "user": user } });
