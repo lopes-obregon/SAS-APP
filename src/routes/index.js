@@ -15,6 +15,7 @@ import Covid from "../pages/Covid";
 import Agendamento2 from "../pages/Agendamento2";
 import ChatApp from "../pages/ChatApp";
 import Feed from "../pages/Feed";
+import ChoiceCadastro from "../pages/ChoiceCadastro";
 
 
 const Tab = createBottomTabNavigator();
@@ -167,9 +168,17 @@ function Routes(){
             component={Feed}
             options={{headerShown: false}}
         />
+    
+    <Stack.Screen
+        name="ChoiceCadastro"
+        component={ChoiceCadastro}
+        options={{headerShown: false}}
+    />
 
 
     </Stack.Navigator>
+    
+    
     
 
    )
