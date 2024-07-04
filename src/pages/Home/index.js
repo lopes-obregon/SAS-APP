@@ -144,7 +144,7 @@ export default function Home(){
                     <TouchableOpacity 
                         onPress={ () => navigation.navigate('Agendamento')}>
                                 
-                            <Icon 
+                            <Icon marginLeft={1}
                             as={Feather}
                             name="calendar"
                             size={10}
@@ -152,7 +152,7 @@ export default function Home(){
                             marginRight={12}
                         
                             />
-                        <Heading  fontSize='12px'>Agendamento</Heading>
+                        <Heading  fontSize='12px'>     Pré {'\n'} Agendar</Heading>
                             
                         </TouchableOpacity> 
                         
