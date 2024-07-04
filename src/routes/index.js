@@ -18,7 +18,8 @@ import Agendamento2 from "../pages/Agendamento2";
 import ChatApp from "../pages/ChatApp";
 import Feed from "../pages/Feed";
 import ChoiceCadastro from "../pages/ChoiceCadastro";
-
+import AgendamentoMedico from "../pages/AgendamentoMedico";
+import AgendamentoMedico2 from "../pages/AgendamentoMedico2";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -168,6 +169,18 @@ function Routes(){
     <Stack.Screen
         name="Agendamento2"
         component={Agendamento2}
+        options={{headerShown: false}}
+    />
+
+<Stack.Screen
+        name="AgendamentoMedico"
+        component={AgendamentoMedico}
+        options={{headerShown: false}}
+    />
+    
+    <Stack.Screen
+        name="AgendamentoMedico2"
+        component={AgendamentoMedico2}
         options={{headerShown: false}}
     />
 

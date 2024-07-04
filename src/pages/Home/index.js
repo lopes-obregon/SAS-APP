@@ -179,7 +179,8 @@ export default function Home(){
                         <Heading fontSize='12px'>     Medicações</Heading>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                        onPress={ () => navigation.navigate('AgendamentoMedico')}>
 
                         <Icon 
                         as={Feather}
