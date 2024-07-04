@@ -10,6 +10,8 @@ import Profile from "../pages/Profile";
 import {Ionicons} from '@expo/vector-icons'
 import Register from "../pages/Register";
 import Register2 from "../pages/Register2";
+import RegisterProfissional from "../pages/RegisterProfissional";
+import RegisterProfissional2 from "../pages/RegisterProfissional2";
 import Agendamento from "../pages/Agendamento";
 import Covid from "../pages/Covid";
 import Agendamento2 from "../pages/Agendamento2";
@@ -136,6 +138,18 @@ function Routes(){
     <Stack.Screen
         name="Register2"
         component={Register2}
+        options={{headerShown: false}}
+        />
+
+    <Stack.Screen
+        name="RegisterProfissional"
+        component={RegisterProfissional}
+        options={{headerShown: false}}
+        />
+    
+    <Stack.Screen
+        name="RegisterProfissional2"
+        component={RegisterProfissional2}
         options={{headerShown: false}}
         />
 

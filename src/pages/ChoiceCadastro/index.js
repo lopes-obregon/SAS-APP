@@ -80,7 +80,7 @@ export default function ChoiceCadastro(){
                    <Box>
                    <TouchableOpacity 
                     style={styles.buttonRegister} 
-                    onPress={ () => navigation.navigate('SignIn')}
+                    onPress={ () => navigation.navigate('RegisterProfissional')}
                     >
                         <Image source={require("../../assets/profissional.png")}>
 
