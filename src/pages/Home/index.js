@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from "react-native";
 import * as Animatable from 'react-native-animatable'
@@ -5,7 +6,7 @@ import { NativeBaseProvider, Box, HStack, Pressable, Icon, Center, Heading } fro
 import {Link, useNavigation} from '@react-navigation/native'
 import { Feather } from '@expo/vector-icons'
 import {LinearGradient} from 'expo-linear-gradient'
-
+import { NavigationContainer } from '@react-navigation/native';
 
 /*Aqui é a configuração do gradiente do background*/
 const config = {
@@ -20,6 +21,8 @@ export default function Home(){
 
     return(
     /* O ScrolView é a barra de rolagem */
+
+    
     <ScrollView>
         <NativeBaseProvider config={config}>
             

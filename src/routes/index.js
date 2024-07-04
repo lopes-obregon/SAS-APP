@@ -1,4 +1,5 @@
 import React from "react";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {createNativeStackNavigator} from "@react-navigation/native-stack"
 
@@ -20,6 +21,7 @@ import Feed from "../pages/Feed";
 import ChoiceCadastro from "../pages/ChoiceCadastro";
 import AgendamentoMedico from "../pages/AgendamentoMedico";
 import AgendamentoMedico2 from "../pages/AgendamentoMedico2";
+import MeusAgendamentos from "../pages/MeusAgendamentos";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -28,6 +30,9 @@ const Stack = createNativeStackNavigator();
 /* Aqui são as rotas para navegar entre as abas e as configurações da Tab Bar*/ 
 function Tabs(){
     return(
+
+        
+
         /* Configurações Tab Bar*/ 
      <Tab.Navigator
          screenOptions={{
@@ -96,14 +101,14 @@ function Tabs(){
      />
 
 <Tab.Screen
-         name="Agendamento"
-         component={Agendamento}
+         name="Meus Agendamento"
+         component={MeusAgendamentos}
          options={{headerShown: false,
          tabBarIcon: ({color, size, focused}) => {
             if(focused){
                 return <Ionicons name="calendar" size={size} color={color}/>
             }
-            return <Ionicons name="home-outline" size={size} color={color}/>
+            return <Ionicons name="calendar-outline" size={size} color={color}/>
          }
         }}
          />
@@ -114,9 +119,14 @@ function Tabs(){
      
  }
  
+
+ 
 /* Abaixo estão as rotas*/ 
 function Routes(){
    return(
+
+    
+
     <Stack.Navigator>
         <Stack.Screen
         name="Welcome"
@@ -211,5 +221,7 @@ function Routes(){
    )
     
 }
+
+
 
 export default Routes;
