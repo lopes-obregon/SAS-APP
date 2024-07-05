@@ -16,6 +16,8 @@ import Covid from "../pages/Covid";
 import Feed from "../pages/Feed";
 import { useRoute } from "@react-navigation/native";
 import ChoiceCadastro from "../pages/ChoiceCadastro";
+import RegisterProfissional from "../pages/RegisterProfissional";
+import RegisterProfissional2 from "../pages/RegisterProfissional2";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -108,6 +110,18 @@ function Routes() {
       <Stack.Screen name="Agendamento2" component={Agendamento2} />
       <Stack.Screen name="Covid" component={Covid} />
       <Stack.Screen name="Feed" component={Feed} />
+
+      <Stack.Screen
+        name="RegisterProfissional"
+        component={RegisterProfissional}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="RegisterProfissional2"
+        component={RegisterProfissional2}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
