@@ -22,6 +22,21 @@ export default function RegisterProfissional2(props) {
   const [endereço, setEndereço] = useState("");
   const [unidade_saúde, setUnidadeDeSaúde] = useState("");
 
+  const formatDate = (text) => {
+    // Remove todos os caracteres não numéricos
+    const cleaned = text.replace(/\D+/g, "");
+
+    // Divide a string em partes de dia, mês e ano
+    const day = cleaned.slice(0, 2);
+    const month = cleaned.slice(2, 4);
+    const year = cleaned.slice(4, 8);
+
+    // Combina as partes com barras, se existirem
+    return `${day}${month.length ? "/" : ""}${month}${
+      year.length ? "/" : ""
+    }${year}`;
+  };
+  async function cadastrar() {}
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -39,6 +54,7 @@ export default function RegisterProfissional2(props) {
             placeholder="Digite seu nome completo..."
             style={styles.input}
             onChangeText={(text) => setNome(texte)}
+            keyboardType="numeric"
           />
 
           <Text style={styles.title}>CPF</Text>
@@ -51,8 +67,10 @@ export default function RegisterProfissional2(props) {
           <Text style={styles.title}>Data de Nascimento</Text>
           <TextInput
             placeholder="dd/mm/aaaa"
+            value={formatDate(data_nascimetno)}
             style={styles.input}
-            onChangeText={(text) => setDataNascimetno(text)}
+            onChangeText={setDataNascimetno}
+            maxLength={10} //inclui as barras na contagem
           />
 
           <Text style={styles.title}>CNES</Text>
