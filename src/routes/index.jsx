@@ -102,12 +102,12 @@ function Routes() {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Register2" component={Register2} />
+      <Stack.Screen name="ChoiceCadastro" component={ChoiceCadastro} />
       <Stack.Screen name="Home" component={Tabs} />
       <Stack.Screen name="Agendamento" component={Agendamento} />
       <Stack.Screen name="Agendamento2" component={Agendamento2} />
       <Stack.Screen name="Covid" component={Covid} />
       <Stack.Screen name="Feed" component={Feed} />
-      <Stack.Screen name="ChoiceCadastro" component={ChoiceCadastro} />
     </Stack.Navigator>
   );
 }

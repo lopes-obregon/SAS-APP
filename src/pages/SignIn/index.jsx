@@ -7,70 +7,59 @@ import {
   TouchableOpacity,
   Image,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-import api from "../../services/api";
 import { useNavigation } from "@react-navigation/native";
+import api from "../../services/api";
+
 export default function SignIn() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState(""); //armazena os valores de email
-  const [senha, setSenha] = useState(""); // armazena os valores de senha
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  //função para realizar o login
   async function login() {
-    //variavel para guardar o formato enviado para a api
-    let json = {
-      usuario: email,
-      senha: senha,
-    };
-    let login_valido = await lerDados(json);
-    if (login_valido == true) {
-      //chama proxima tela
-      console.log("Login válido!");
-      //let teste = (await api.put('users', json)).data;
+    if (!email || !senha) {
+      Alert.alert("Por favor, preencha todos os campos.");
+      return;
+    }
 
-      //console.log("teste:", teste);
-      let user = await (await api.put("users", json)).data;
-      navigation.navigate("Initial", user);
+    const json = { usuario: email, senha: senha };
+
+    setLoading(true);
+    const login_valido = await lerDados(json);
+    setLoading(false);
+
+    if (login_valido) {
+      console.log("Login válido!");
+      try {
+        let resultado_servidor = await api.put("users", json);
+        console.log("Resultado do servidor:", resultado_servidor.data);
+        navigation.navigate("Home", {
+          screen: "Início",
+          params: { user: resultado_servidor.data },
+        });
+      } catch (error) {
+        console.log("Erro ao buscar dados do usuário:", error);
+        Alert.alert("Erro ao buscar dados do usuário.");
+      }
     } else {
-      //mensagem de erro
-      Alert.alert("Login ou senha invalidos!");
+      Alert.alert("Login ou senha inválidos!");
     }
   }
+
   async function lerDados(dado) {
-    let retorno = false;
     try {
-      let response = await api.post("session", dado);
-      if (response.data == true) {
-        retorno = true;
-      }
-      return retorno;
+      const response = await api.post("session", dado);
+      return response.data === true;
     } catch (error) {
       console.log("Algo deu errado:", error);
+      Alert.alert("Erro ao realizar login. Tente novamente mais tarde.");
+      return false;
     }
   }
-  /*async function lerDadosTeste(dado){
-        let retorno = -1;
-        try {
-            //let json = await fs.readFileSync('arquivoTeste.json', 'utf8');
-            let path = RNFS.DocumentDirectoryPath + '/arquivoTeste.json';
-            await RNFS.readFile(path, 'utf8').then(resultado =>{
-                let obj = JSON.parse(resultado);
-                if((obj.senha == dado.senha) && (obj.email == dado.email)){
-                    retorno = 1;
-                }else{
-                    retorno = 0;
 
-                }
-            })
-            //let json = fs.readFileAssets()
-        } catch (error) {
-            console.log(error)
-        }
-       
-        return retorno;
-        
-    }*/
   return (
     <View style={styles.container}>
       <Animatable.View
@@ -87,25 +76,34 @@ export default function SignIn() {
           style={{ width: "100%" }}
           resizeMode="contain"
         />
-
         <Text style={styles.title}>E-mail</Text>
         <TextInput
           placeholder="Digite seu e-mail..."
           style={styles.input}
           onChangeText={setEmail}
+          value={email}
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
-
         <Text style={styles.title}>Senha</Text>
         <TextInput
           placeholder="Digite sua senha..."
           style={styles.input}
           onChangeText={setSenha}
+          value={senha}
+          secureTextEntry
         />
-
-        <TouchableOpacity style={styles.button} onPress={login}>
-          <Text style={styles.buttonText}>Entrar</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={login}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator size="small" color="#FFF" />
+          ) : (
+            <Text style={styles.buttonText}>Entrar</Text>
+          )}
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.buttonRegister}
           onPress={() => navigation.navigate("ChoiceCadastro")}
@@ -133,15 +131,13 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 28,
     fontWeight: "bold",
-    justifyContent: "center",
-    alignItems: "center",
     alignSelf: "center",
   },
   containerForm: {
     backgroundColor: "#FFF",
     flex: 1,
-    borderTopLeftRadius: 500,
-    borderTopRightRadius: 500,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     paddingStart: "10%",
     paddingEnd: "10%",
   },
@@ -149,9 +145,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#408755",
     fontSize: 20,
-    marginTop: 40,
+    marginTop: 20,
   },
-
   input: {
     borderBottomWidth: 1,
     height: 40,
@@ -175,8 +170,6 @@ const styles = StyleSheet.create({
   buttonRegister: {
     marginTop: 14,
     alignSelf: "center",
-    justifyContent: "center",
-    alignItems: "center",
   },
   registerText: {
     color: "#408755",
