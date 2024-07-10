@@ -8,9 +8,10 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
+  Alert,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-
+import api from "../../services/api";
 import { useNavigation } from "@react-navigation/native";
 export default function RegisterProfissional2(props) {
   const navigation = useNavigation();
@@ -36,7 +37,22 @@ export default function RegisterProfissional2(props) {
       year.length ? "/" : ""
     }${year}`;
   };
-  async function cadastrar() {}
+  async function cadastrar() {
+    let json = {
+      usuario: email,
+      senha: senha,
+      nome: nome,
+      cpf: cpf,
+      data_nascimento: data_nascimetno,
+      cnes: cnes,
+      endereco: endereço,
+      unidade_saude: unidade_saúde,
+    };
+    api.post("/users", json).then(() => {
+      Alert.alert("Médico cadastrado com sucesso!");
+      navigation.navigate("SignIn");
+    });
+  }
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -53,7 +69,7 @@ export default function RegisterProfissional2(props) {
           <TextInput
             placeholder="Digite seu nome completo..."
             style={styles.input}
-            onChangeText={(text) => setNome(texte)}
+            onChangeText={(text) => setNome(text)}
             keyboardType="numeric"
           />
 
@@ -94,10 +110,7 @@ export default function RegisterProfissional2(props) {
             onChangeText={(text) => setUnidadeDeSaúde(text)}
           />
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("SignIn")}
-          >
+          <TouchableOpacity style={styles.button} onPress={cadastrar}>
             <Text style={styles.buttonText}>Finalizar Cadastro</Text>
           </TouchableOpacity>
         </Animatable.View>
