@@ -18,7 +18,8 @@ import { useRoute } from "@react-navigation/native";
 import ChoiceCadastro from "../pages/ChoiceCadastro";
 import RegisterProfissional from "../pages/RegisterProfissional";
 import RegisterProfissional2 from "../pages/RegisterProfissional2";
-
+import AgendamentoMedico from "../pages/AgendamentoMedico";
+import AgendamentoMedico2 from "../pages/AgendamentoMedico2";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -110,7 +111,8 @@ function Routes() {
       <Stack.Screen name="Agendamento2" component={Agendamento2} />
       <Stack.Screen name="Covid" component={Covid} />
       <Stack.Screen name="Feed" component={Feed} />
-
+      <Stack.Screen name="AgendamentoMedico" component={AgendamentoMedico} />
+      <Stack.Screen name="AgendamentoMedico2" component={AgendamentoMedico2} />
       <Stack.Screen
         name="RegisterProfissional"
         component={RegisterProfissional}
