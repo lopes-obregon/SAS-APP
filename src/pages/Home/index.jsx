@@ -217,7 +217,7 @@ export default function Home() {
                     color="#408755"
                     marginRight={12}
                   />
-                  <Heading fontSize="12px">Agendamento</Heading>
+                  <Heading fontSize="12px"> Pré {"\n"} Agendar</Heading>
                 </TouchableOpacity>
                 <TouchableOpacity>
                   <Icon

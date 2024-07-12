@@ -20,6 +20,7 @@ import RegisterProfissional from "../pages/RegisterProfissional";
 import RegisterProfissional2 from "../pages/RegisterProfissional2";
 import AgendamentoMedico from "../pages/AgendamentoMedico";
 import AgendamentoMedico2 from "../pages/AgendamentoMedico2";
+import MeusAgendamentos from "../pages/MeusAgendamentos";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ function Tabs() {
       <Tab.Screen
         name="Início"
         component={Home}
+        user={user}
         options={{
           headerShown: false,
           tabBarIcon: ({ color, size, focused }) => (
@@ -93,6 +95,23 @@ function Tabs() {
         }}
       >
         {() => <Profile user={user} />}
+      </Tab.Screen>
+      <Tab.Screen
+        name="MeusAgendamentos"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return <Ionicons name="calendar" size={size} color={color} />;
+            }
+            //return <Ionicons name="home-outline" size={size} color={color} />;
+            return (
+              <Ionicons name="calendar-outline" size={size} color={color} />
+            );
+          },
+        }}
+      >
+        {() => <MeusAgendamentos user={user} />}
       </Tab.Screen>
     </Tab.Navigator>
   );
