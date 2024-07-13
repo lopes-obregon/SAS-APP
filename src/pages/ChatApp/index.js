@@ -1,29 +1,54 @@
-// ChatApp.js
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet,Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { io } from 'socket.io-client';
 
-function ChatApp() {
+const URL_SERVIDOR = 'http://192.168.3.4:3000';
+const socket = io(URL_SERVIDOR);
+
+function ChatApp(props) {
   const [selectedContact, setSelectedContact] = useState(null);
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
-
+  const [contato_id, setContatoId] = useState(0);
+  const usuario_atual = props?.user?.nome;
+  
   const contacts = [
     { id: 1, name: 'Médico John' },
     { id: 2, name: 'Médica Alice' },
     { id: 3, name: 'ACS Bob' },
   ];
 
+  useEffect(() => {
+    socket.on('chat message', (msg) => {
+      console.log('Nova mensagem recebida:', msg);
+      setMessages((prevMessages) => [...prevMessages, msg]);
+    });
+
+    return () => {
+      socket.off('chat message');
+    };
+  }, []);
+
   const handleContactClick = (contactId) => {
     setSelectedContact(contactId);
+    setContatoId(contactId);
+    setMessages([]); // Limpar as mensagens ao selecionar um novo contato
   };
 
   const handleBackToContacts = () => {
     setSelectedContact(null);
+    setMessages([]); // Limpar as mensagens ao voltar para a lista de contatos
   };
 
   const handleSendMessage = () => {
     if (inputMessage.trim() !== '') {
-      setMessages([...messages, { content: inputMessage, sender: 'user' }]);
+      const msg = {
+        chatId: contato_id,
+        content: inputMessage,
+        sender: usuario_atual,
+      };
+      socket.emit('chat message', msg); // Emitir mensagem com o evento 'chat message'
+      setMessages((prevMessages) => [...prevMessages, msg]);
       setInputMessage('');
     }
   };
@@ -46,15 +71,15 @@ function ChatApp() {
             <TouchableOpacity style={styles.header} onPress={handleBackToContacts}>
               <Text style={styles.headerButton}>Voltar</Text>
             </TouchableOpacity>
-            
+
             <View flexDirection="row">
-            <Image source={require("../../assets/profile-pic.png")} style={styles.image} resizeMode="center"></Image>
-            <Text style={styles.chatHeader}>Médico(a) {selectedContact}</Text>
+              <Image source={require("../../assets/profile-pic.png")} style={styles.image} resizeMode="center"></Image>
+              <Text style={styles.chatHeader}>Médico(a) {selectedContact}</Text>
             </View>
-            
+
             <ScrollView style={styles.messages}>
               {messages.map((message, index) => (
-                <View key={index} style={message.sender === 'user' ? styles.userMessage : styles.otherMessage}>
+                <View key={index} style={message.sender === usuario_atual ? styles.userMessage : styles.otherMessage}>
                   <Text>{message.content}</Text>
                 </View>
               ))}
@@ -62,7 +87,7 @@ function ChatApp() {
             <View style={styles.input}>
               <TextInput
                 style={styles.inputField}
-                placeholder="Escreva sua Mensagem..."
+                placeholder="Escreva sua mensagem..."
                 value={inputMessage}
                 onChangeText={(text) => setInputMessage(text)}
               />
@@ -93,7 +118,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 18,
     fontWeight: 'bold',
-    color:"#408755",
+    color: "#408755",
     marginBottom: 10,
   },
   sidebarItem: {
@@ -160,18 +185,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
   },
-  profileImage:{
+  profileImage: {
     marginTop: 18,
     width: 200,
     height: 200,
     borderRadius: 100,
     overflow: "hidden",
-},
-image:{
-    flex:1,
+  },
+  image: {
+    flex: 1,
     width: undefined,
     height: undefined,
-},
+  },
 });
 
 export default ChatApp;

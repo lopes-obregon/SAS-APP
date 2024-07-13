@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image, Alert } from "react-native";
 import {Icon, NativeBaseProvider, Heading, Box, Center} from 'native-base';
 import * as Animatable from 'react-native-animatable';
 import { Feather } from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient'
 
 
@@ -17,8 +17,15 @@ const config = {
 
 /* Aqui será a página de agendamento*/ 
 export default function Agendamento(){
+    //variavel para mudança de estado dos dados inseridos
+    const [nome_paciente, setNomePaciente] = useState('');
+    const [cartão_sus, setCartãoSus] = useState('');
+    const [filhos, setFilhos] = useState([]);
+    //variavel condicional para renderização do estado em qual o usuario vai clicar
+    const [is_clicou, setIsClicou] = useState(false);
     const navigation = useNavigation();
-
+    const route = useRoute();
+    let user = route.params?.user;
     return(
         <ScrollView> 
             <NativeBaseProvider config={config}>
@@ -77,7 +84,11 @@ export default function Agendamento(){
                         <Text  marginLeft={15} style={styles.title} >Quem é o Paciente ?</Text>
                         <Box flexDir="row">
                         
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{
+                            setCartãoSus(user?.cadastro_sus);
+                            setNomePaciente(user?.nome);
+                            setIsClicou(true);
+                        }}>
         
                         <Image marginLeft={15}
                                         marginTop={10} borderRadius={30}
@@ -88,7 +99,11 @@ export default function Agendamento(){
                                         />
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{
+                            setIsClicou(false);
+                            setCartãoSus('');
+                            setNomePaciente('');
+                        }}>
         
                         <Image marginLeft={15} marginBottom={2}
                                         marginTop={10} borderRadius={30}
@@ -102,7 +117,14 @@ export default function Agendamento(){
 
 
                         <TouchableOpacity 
-                                    onPress={ () => navigation.navigate('Agendamento')}>
+                                    onPress={ () => {
+                                        console.log("nome paciente:", nome_paciente);
+                                        console.log("Cartão sus:", cartão_sus);
+                                        setFilhos(prevFilhos =>[...prevFilhos, { nome_paciente, cartão_sus }]); 
+                                        setIsClicou(true);
+                                        console.log(filhos.forEach(filho => {console.log("Filho:" + filho?.cartão_sus +" : " + filho?.nome_paciente)}));
+                                        Alert.alert("Filho:" + nome_paciente + " Adiconado com sucesso!");
+                                    }}>
                                     <Icon marginLeft={5} marginTop={12}
                                         as={Feather}
                                         name="user-plus"
@@ -113,7 +135,7 @@ export default function Agendamento(){
 
 
                         </Box>
-
+                        {is_clicou ? 
                         <Box marginBottom={150}>
 
                             <Heading marginTop={2} marginLeft={3} style={styles.title}  
@@ -123,6 +145,7 @@ export default function Agendamento(){
                             <TextInput marginLeft={15} marginRight={5}
                             placeholder="Digite o nome completo do paciente..."
                             style={styles.input}
+                            value={nome_paciente}
                             />
 
 
@@ -130,18 +153,51 @@ export default function Agendamento(){
                             <TextInput marginLeft={15} marginRight={5}
                             placeholder="Digite o cartão SUS do paciente..."
                             style={styles.input}
+                            value={cartão_sus}
                             />
                         </Box>
 
-                       
+                        : 
+                        <Box marginBottom={150}>
 
-                        <TouchableOpacity 
+                            <Heading marginTop={2} marginLeft={3} style={styles.title}  
+                            color="#408755">Dados do Paciente</Heading>
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Paciente</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o nome completo do paciente..."
+                            style={styles.input}
+                            onChangeText={setNomePaciente}
+                            />
+
+
+                            <Text marginLeft={15} marginRight={5} style={styles.title2}>Cartão SUS</Text>
+                            <TextInput marginLeft={15} marginRight={5}
+                            placeholder="Digite o cartão SUS do paciente..."
+                            style={styles.input}
+                            onChangeText={setCartãoSus}
+                            
+                            />
+                        </Box>
+                        }
+                       
+{
+    filhos.length >= 1 ?
+    <TouchableOpacity 
                 style={styles.button}
-                onPress={ () => navigation.navigate('Agendamento2')}
+                onPress={ () => navigation.navigate('Agendamento2', {filhos, user})}
                 >
                     <Text style={styles.buttonText}>PRÓXIMO</Text>
                 </TouchableOpacity>
-
+    
+    :
+                        <TouchableOpacity 
+                style={styles.button}
+                onPress={ () => navigation.navigate('Agendamento2', { user})}
+                >
+                    <Text style={styles.buttonText}>PRÓXIMO</Text>
+                </TouchableOpacity>
+}
                     </Box>    
                 </NativeBaseProvider>   
             </ScrollView>

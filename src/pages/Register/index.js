@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
 import * as Animatable from 'react-native-animatable'
 
@@ -8,6 +8,8 @@ import {useNavigation} from '@react-navigation/native'
 /* Essa é a primeira página de registro*/ 
 export default function Register(){
     const navigation = useNavigation();
+   const [email, setEmail] = useState('');
+   const [senha, setSenha] = useState('');
     return (
         <View style={styles.container}>            
 
@@ -24,6 +26,7 @@ export default function Register(){
         <Text style={styles.title}>E-mail</Text>
             <TextInput
             placeholder="Digite seu e-mail..."
+            onChangeText={text => setEmail(text)}
             style={styles.input}
             />
 
@@ -38,10 +41,11 @@ export default function Register(){
                 <TextInput
                 placeholder="Digite sua senha..."
                 style={styles.input}
+                onChangeText={text => setSenha(text)}
                 />
 
         <TouchableOpacity style={styles.button} 
-        onPress={ () => navigation.navigate('Register2')}>
+        onPress={ () => navigation.navigate('Register2', {email, senha})}>
             <Text style={styles.buttonText}>Prosseguir</Text>
         </TouchableOpacity>
 
