@@ -47,7 +47,14 @@ export default function AgendamentoMedico() {
           }}
         >
           <Box rounded="md" flexDir="row" alignItems="center">
-            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("Home", {
+                  screen: "Início",
+                  params: { user: user },
+                })
+              }
+            >
               <Icon as={Feather} name="chevron-left" size={7} color="#408755" />
             </TouchableOpacity>
 

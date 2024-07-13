@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
   Title,
   FlatList,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { Icon, NativeBaseProvider, Heading, Box, Center } from "native-base";
 import * as Animatable from "react-native-animatable";
@@ -37,7 +38,7 @@ export default function AgendamentoMedico2() {
   const navigation = useNavigation();
   const route = useRoute();
   const { cpf, nome, idade, card_sus, endereço, user } = route.params;
-
+  const [loading, setLoading] = useState(false);
   console.log("Dados enviados:", {
     cpf,
     nome,
@@ -55,8 +56,15 @@ export default function AgendamentoMedico2() {
   };
 
   async function salvarAgendamento() {
+    setLoading(true);
     let data_atual = new Date();
     let data_selecionado = new Date(dia_selecionado);
+    console.log("Salvar agendamento!");
+    console.log(
+      "testa da condição:",
+      data_selecionado.getDate() >= data_atual.getDate() &&
+        data_selecionado.getMonth() + 1 >= data_atual.getMonth() + 1
+    );
     if (dia_selecionado == undefined || hora_selecionado == undefined) {
       Alert.alert(
         "Dia ou Hora não selecionado",
@@ -66,20 +74,33 @@ export default function AgendamentoMedico2() {
       data_selecionado.getDate() >= data_atual.getDate() &&
       data_selecionado.getMonth() + 1 >= data_atual.getMonth() + 1
     ) {
-      hora_dia_indisponivel_dic.set(dia_selecionado, hora_selecionado);
-      /*api
-        .post("/agendamento", {
-          cpf,
-          nome,
-          idade,
-          card_sus,
-          endereço,
-          user,
-        })
+      //hora_dia_indisponivel_dic.set(dia_selecionado, hora_selecionado);
+      let json = {
+        cpf,
+        nome,
+        idade,
+        card_sus,
+        endereço,
+        data: dia_selecionado,
+        hora: hora_selecionado,
+        user,
+      };
+      console.log("Json enviado:", json);
+
+      api
+        .post("/agendamento", json)
         .then(() => {
           Alert.alert("Sucesso!", "Paciente agendado com sucesso!");
+          navigation.navigate("Home", {
+            screen: "Início",
+            params: { user: user },
+          });
         })
-        .catch(Alert.alert("Erro", "Sinto muito algum dado está incorreto!"));*/
+        .catch((err) => {
+          Alert.alert("Erro", "Sinto muito algum dado está incorreto!");
+          console.log("ERRO:", err);
+          setLoading(false);
+        });
     } else {
       Alert.alert(
         "Data invalida",
@@ -103,7 +124,9 @@ export default function AgendamentoMedico2() {
       >
         <Box rounded="md" flexDir="row" alignItems="center">
           <TouchableOpacity
-            onPress={() => navigation.navigate("AgendamentoMedico")}
+            onPress={() =>
+              navigation.navigate("AgendamentoMedico", { user: user })
+            }
           >
             <Icon as={Feather} name="chevron-left" size={7} color="#408755" />
           </TouchableOpacity>
@@ -154,7 +177,7 @@ export default function AgendamentoMedico2() {
                   align="center"
                   onPress={() => handleItemPress(item)}
                 >
-                  <Text small>{item}:00</Text>
+                  <Text small>{item}</Text>
                   <Text small> AM</Text>
                 </TouchableOpacity>
               )}
@@ -163,8 +186,16 @@ export default function AgendamentoMedico2() {
         </Box>
 
         <Box marginTop={16}>
-          <TouchableOpacity style={styles.button} onPress={salvarAgendamento}>
-            <Text style={styles.buttonText}>CONFIRMAR</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={salvarAgendamento}
+            disabled={loading}
+          >
+            {loading ? (
+              <ActivityIndicator size="small" color="#FFF" />
+            ) : (
+              <Text style={styles.buttonText}>CONFIRMAR</Text>
+            )}
           </TouchableOpacity>
         </Box>
       </Box>

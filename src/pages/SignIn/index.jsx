@@ -29,7 +29,6 @@ export default function SignIn() {
 
     setLoading(true);
     const login_valido = await lerDados(json);
-    setLoading(false);
 
     if (login_valido) {
       console.log("Login válido!");
@@ -43,15 +42,17 @@ export default function SignIn() {
       } catch (error) {
         console.log("Erro ao buscar dados do usuário:", error);
         Alert.alert("Erro ao buscar dados do usuário.");
+        setLoading(false);
       }
     } else {
       Alert.alert("Login ou senha inválidos!");
+      setLoading(false);
     }
   }
 
   async function lerDados(dado) {
     try {
-      const response = await api.post("session", dado);
+      const response = await api.post("/session", dado);
       return response.data === true;
     } catch (error) {
       console.log("Algo deu errado:", error);

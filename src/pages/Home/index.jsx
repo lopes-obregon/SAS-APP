@@ -102,28 +102,31 @@ export default function Home() {
                 height={163}
                 width={380}
               >
-                <Box marginTop={10}>
-                  <Heading size="sm" color="#FFF">
-                    POR QUE SE VACINAR?
-                  </Heading>
-                </Box>
-                <Box
-                  marginLeft={5}
-                  alignItems="center"
-                  marginTop={4}
-                  backgroundColor="#FFF"
-                  borderRadius={30}
-                  height={5}
-                  width={120}
-                >
-                  <Heading size="sm" color="#408755">
-                    LEIA AGORA
-                  </Heading>
+                <Box>
+                  <Box marginTop={10}>
+                    <Heading size="sm" color="#FFF">
+                      POR QUE SE VACINAR?
+                    </Heading>
+                  </Box>
+
+                  <Box
+                    marginLeft={5}
+                    alignItems="center"
+                    marginTop={4}
+                    backgroundColor="#FFF"
+                    borderRadius={30}
+                    height={5}
+                    width={120}
+                  >
+                    <Heading size="sm" color="#408755">
+                      LEIA AGORA
+                    </Heading>
+                  </Box>
                 </Box>
                 <Box>
                   <Image
                     source={require("../../assets/initial.png")} // Adicione uma imagem real ou um placeholder
-                    style={{ width: 100, height: 100 }}
+                    style={{ width: 200, height: 160 }}
                     resizeMode="contain"
                   />
                 </Box>
@@ -215,9 +218,9 @@ export default function Home() {
                     name="calendar"
                     size={10}
                     color="#408755"
-                    marginRight={12}
+                    marginRight={16}
                   />
-                  <Heading fontSize="12px"> Pré {"\n"} Agendar</Heading>
+                  <Heading fontSize="12px">Agendar Paciente</Heading>
                 </TouchableOpacity>
                 <TouchableOpacity>
                   <Icon
@@ -225,8 +228,8 @@ export default function Home() {
                     name="activity"
                     size={10}
                     color="#408755"
-                    marginRight={12}
-                    marginLeft={5}
+                    marginRight={16}
+                    marginLeft={0}
                   />
 
                   <Heading fontSize="12px">Exames</Heading>
@@ -237,8 +240,8 @@ export default function Home() {
                     name="toggle-left"
                     size={10}
                     color="#408755"
-                    marginRight={12}
-                    marginLeft={5}
+                    marginRight={16}
+                    marginLeft={0}
                   />
                   <Heading fontSize="12px">Medicações</Heading>
                 </TouchableOpacity>
@@ -248,7 +251,7 @@ export default function Home() {
                     name="list"
                     size={10}
                     color="#408755"
-                    marginLeft={5}
+                    marginLeft={0}
                   />
                   <Heading fontSize="12px">Outros</Heading>
                 </TouchableOpacity>
@@ -270,7 +273,7 @@ export default function Home() {
             >
               <Image
                 source={require("../../assets/covid.png")} // Adicione uma imagem real ou um placeholder
-                style={{ width: "100%", height: 200 }}
+                style={{ width: "100%", height: 310 }}
                 resizeMode="contain"
               />
               <Box

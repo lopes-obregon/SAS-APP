@@ -27,7 +27,7 @@ const Stack = createNativeStackNavigator();
 function Tabs() {
   const route = useRoute();
   let user = route.params?.params?.user;
-  console.log("Dentro da USER:", user);
+  console.log("Dentro da tabs:", user);
 
   return (
     <Tab.Navigator
@@ -132,6 +132,7 @@ function Routes() {
       <Stack.Screen name="Feed" component={Feed} />
       <Stack.Screen name="AgendamentoMedico" component={AgendamentoMedico} />
       <Stack.Screen name="AgendamentoMedico2" component={AgendamentoMedico2} />
+      <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen
         name="RegisterProfissional"
         component={RegisterProfissional}
