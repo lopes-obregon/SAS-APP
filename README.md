@@ -1,7 +1,7 @@
-<h1 align="center">📱 SAS-APP - Sistema Ambientado à Saúde (Aplicativo Mobile)</h1>
+<h1 align="center">📱 SAS-APP - Health-Oriented System (Mobile Application)</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=yellow&style=for-the-badge"/>
+  <img src="https://img.shields.io/static/v1?label=STATUS&message=IN%20DEVELOPMENT&color=yellow&style=for-the-badge"/>
   <img src="https://img.shields.io/github/stars/lopes-obregon/SAS-APP?style=social"/>
   <img src="https://img.shields.io/github/languages/top/lopes-obregon/SAS-APP?color=blue&style=for-the-badge"/>
   <img src="https://img.shields.io/github/last-commit/lopes-obregon/SAS-APP?color=green&style=for-the-badge"/>
@@ -11,131 +11,135 @@
 </p>
 
 <p align="center">
-  O aplicativo mobile do Sistema Ambientado à Saúde, conectando pacientes a serviços médicos.
+  The mobile application of the Health-Oriented System, connecting patients to medical services.
 </p>
 
 ---
 
-## 📑 Índice
+## 📑 Index
 
-* [📌 Descrição do Projeto](#-descrição-do-projeto)
-* [⚙️ Funcionalidades](#-funcionalidades)
-* [🧪 Screenshots & Demonstrações](#-screenshots--demonstrações)
-* [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
-* [🛠️ Tecnologias Usadas](#-tecnologias-usadas)
-* [👥 Contribuidores](#-contribuidores)
-* [📄 Licença](#-licença)
-
----
-
-## 📌 Descrição do Projeto
-
-O **SAS-APP** é o componente mobile do ecossistema SAS - Sistema Ambientado à Saúde. Desenvolvido para oferecer uma **experiência intuitiva e acessível** aos pacientes, este aplicativo funciona como uma ponte direta para serviços de saúde, interagindo com o [backend do sistema SAS](https://github.com/lopes-obregon/SAS) para gerenciar dados e funcionalidades.
-
-Seu principal objetivo é **empoderar o paciente**, permitindo:
-* Realizar pré-agendamentos de consultas de forma simplificada.
-* Estabelecer um canal de comunicação direto para tirar dúvidas com profissionais de saúde.
-* Acompanhar o histórico de exames e atestados.
-
-Além disso, o SAS-APP visa **facilitar a comunicação e a coordenação** entre diferentes instituições de saúde, como hospitais e clínicas privadas, promovendo um ecossistema de saúde mais integrado e eficiente.
+* [📌 Project Description](#-descrição-do-projeto)
+* [⚙️ Features](#-funcionalidades)
+* [🧪 Screenshots & Demonstrations](#-screenshots--demonstrações)
+* [🚀 How to Run the Project](#-como-executar-o-projeto)
+* [🛠️ Technologies Used](#-tecnologias-usadas)
+* [👥 Contributors](#-contribuidores)
+* [📄 License](#-licença)
 
 ---
 
-## ⚙️ Funcionalidades
+## 📌 Project Description
 
-O aplicativo SAS-APP oferece um conjunto de funcionalidades essenciais para otimizar a interação do paciente com os serviços de saúde:
+**SAS-APP** is the mobile component of the SAS ecosystem - Health-Oriented System. Designed to offer an **intuitive and accessible experience** to patients, this app acts as a direct bridge to healthcare services, interacting with the [SAS system backend](https://github.com/lopes-obregon/SAS) to manage data and functionalities.
 
-* **Cadastro e Autenticação de Usuário:**
-    * Criação de novas contas para pacientes de forma segura.
-    * Login intuitivo com validação de credenciais.
-* **Consulta de Dados do Paciente:**
-    * Visualização de informações pessoais e de saúde.
-    * Acompanhamento do histórico de consultas, exames e atestados.
-* **Agendamento de Consultas:**
-    * Funcionalidade de pré-agendamento de consultas com médicos da UBS (Unidade Básica de Saúde) ou clínicas parceiras.
-    * Visualização de disponibilidade de horários e especialidades.
-* **Interação com Médicos:**
-    * Canal de comunicação direto para envio de dúvidas e recebimento de orientações.
-    * Notificações sobre o status de consultas ou respostas de médicos.
-* **Gestão de Documentos:**
-    * Acesso facilitado a exames e atestados digitais.
-* **Interface Amigável:**
-    * Design limpo e responsivo para uma navegação fluida em diferentes dispositivos móveis.
+Its main goal is to **empower the patient**, allowing them to:
+* Easily pre-schedule medical appointments.
+* Establish a direct communication channel to ask questions to healthcare professionals.
+* Track the history of exams and medical certificates.
+
+Additionally, SAS-APP aims to **facilitate communication and coordination** among different healthcare institutions, such as hospitals and private clinics, promoting a more integrated and efficient health ecosystem.
 
 ---
 
+## ⚙️ Features
 
-## 🚀 Como Executar o Projeto
+The SAS-APP offers a set of essential features to optimize patient interaction with healthcare services:
 
-Para testar e rodar o SAS-APP em seu ambiente de desenvolvimento, siga as instruções abaixo:
+* **User Registration and Authentication:**
+    * Secure creation of new patient accounts.
+    * Intuitive login with credential validation.
+* **Patient Data Consultation:**
+    * Viewing personal and health-related information.
+    * Tracking history of appointments, exams, and certificates.
+* **Appointment Scheduling:**
+    * Pre-scheduling appointments with doctors from UBS (Basic Health Unit) or partner clinics.
+    * Viewing available time slots and specialties.
+* **Interaction with Doctors:**
+    * Direct communication channel for sending questions and receiving guidance.
+    * Notifications about appointment status or doctor responses.
+* **Document Management:**
+    * Easy access to digital exams and certificates.
+* **User-Friendly Interface:**
+    * Clean and responsive design for smooth navigation across mobile devices.
 
-### Pré-requisitos
+---
 
-* **Node.js:** Certifique-se de ter o [Node.js](https://nodejs.org/en/download/) (versão LTS recomendada) instalado.
-* **npm:** O gerenciador de pacotes `npm` (vem com o Node.js).
-* **Expo CLI:** O Expo CLI facilita o desenvolvimento React Native. Se não tiver, instale-o globalmente:
+### 🚀 Project Demo
+
+Click here to view the demo on LinkedIn:
+<a href="https://www.linkedin.com/posts/renan-lopes-obregon-5b8892104_nodejs-react-reactnative-activity-7249131651040002048-Y4Jj?utm_source=share&utm_medium=member_desktop&rcm=ACoAABp4idwBvHi2ikv6o5FEFlzHholvtMAINLs" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Ver Demonstração no LinkedIn">
+</a>
+
+
+## 🚀 How to Run the Project
+
+To test and run SAS-APP in your development environment, follow the instructions below:
+
+### Prerequisites
+
+* **Node.js:** Make sure you have [Node.js](https://nodejs.org/en/download/) (LTS version recommended) installed.
+* **npm:** The `npm` package manager (comes with Node.js).
+* **Expo CLI:** Expo CLI simplifies React Native development. If you don’t have it, install it globally:
     ```bash
     npm install -g expo-cli
     ```
-* **Backend SAS:** O **[backend do sistema SAS](https://github.com/lopes-obregon/SAS)** **deve estar rodando em paralelo**. Certifique-se de seguir as instruções de execução do repositório `SAS` e que ele esteja acessível pelo aplicativo (provavelmente na mesma rede ou via `localhost` configurado).
+* **SAS Backend:** The **[SAS system backend](https://github.com/lopes-obregon/SAS)** **must be running in parallel**. Make sure to follow the execution instructions from the `SAS` repository and that it’s accessible by the app (likely on the same network or via configured `localhost`).
 
-### Configuração e Inicialização
+### Setup and Initialization
 
-1.  **Clone o Repositório do Aplicativo:**
+1.  **Clone the App Repository:**
     ```bash
-    git clone [https://github.com/lopes-obregon/SAS-APP.git](https://github.com/lopes-obregon/SAS-APP.git)
+    git clone https://github.com/lopes-obregon/SAS-APP.git
     cd SAS-APP
     ```
 
-2.  **Instale as Dependências:**
-    No diretório raiz do projeto do aplicativo, instale as dependências Node.js:
+2.  **Install Dependencies:**
+    In the root directory of the app project, install Node.js dependencies:
     ```bash
     npm install
     ```
 
-3.  **Inicie o Projeto com o Expo:**
-    Após a instalação das dependências, inicie o servidor de desenvolvimento do Expo:
+3.  **Start the Project with Expo:**
+    After installing dependencies, start the Expo development server:
     ```bash
     expo start
     ```
-    Isso abrirá uma página no seu navegador com um QR Code.
+    This will open a browser page with a QR Code.
 
-4.  **Execute o Aplicativo:**
-    * **No seu celular:** Baixe o aplicativo "Expo Go" (disponível na App Store ou Google Play). Abra o Expo Go e escaneie o QR Code exibido no seu navegador.
-    * **No emulador/simulador:** Use as opções na página do Expo (ex: "Run on Android emulator", "Run on iOS simulator") se você tiver um emulador configurado.
+4.  **Run the App:**
+    * **On your phone:** Download the "Expo Go" app (available on the App Store or Google Play). Open Expo Go and scan the QR Code displayed in your browser.
+    * **On emulator/simulator:** Use the options on the Expo page (e.g., "Run on Android emulator", "Run on iOS simulator") if you have an emulator configured.
 
-**Importante:** Certifique-se de que o endereço do backend (onde o servidor SAS está rodando) esteja corretamente configurado no código do seu aplicativo para que ele possa se comunicar com as APIs.
-
----
-
-## 🛠️ Tecnologias Usadas
-
-O desenvolvimento do SAS-APP foi realizado utilizando as seguintes tecnologias e ferramentas:
-
-* **Linguagem de Programação:** `JavaScript`
-* **Framework Mobile:** `React Native`
-* **Ambiente de Desenvolvimento/Execução:** `Expo` (simplifica o desenvolvimento e build de apps React Native)
-* **Consumo de API:** Comunicação com o backend `Node.js` (projeto SAS).
-
+**Important:** Make sure the backend address (where the SAS server is running) is correctly configured in your app’s code so it can communicate with the APIs.
 
 ---
 
-## 👥 Contribuidores
+## 🛠️ Technologies Used
 
-Este projeto foi desenvolvido com a colaboração de:
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/45721862?v=4" width=115><br><sub>Renan Lopes Obregon</sub>](https://github.com/lopes-obregon) |[<img loading="lazy" src="https://avatars.githubusercontent.com/u/164580150?v=4"  width=115><br><sub>Samara Freitas</sub>]([https://github.com/lopes-obregon](https://github.com/Samara0liveira))
+SAS-APP was developed using the following technologies and tools:
+
+* **Programming Language:** `JavaScript`
+* **Mobile Framework:** `React Native`
+* **Development/Execution Environment:** `Expo` (simplifies React Native app development and builds)
+* **API Consumption:** Communication with `Node.js` backend (SAS project).
+
+---
+
+## 👥 Contributors
+
+This project was developed with the collaboration of:
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/45721862?v=4" width=115><br><sub>Renan Lopes Obregon</sub>](https://github.com/lopes-obregon) |[<img loading="lazy" src="https://avatars.githubusercontent.com/u/164580150?v=4"  width=115><br><sub>Samara Freitas</sub>](https://github.com/Samara0liveira)|
 | :---: | :---: |
 
-
-
 ---
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a **Licença MIT**.
+This project is licensed under the **MIT License**.
 
-A Licença MIT é uma licença de software livre permissiva que permite a livre utilização, modificação e distribuição do código-fonte, desde que a notificação de direitos autorais e a própria licença sejam incluídas em todas as cópias ou partes substanciais do software.
+The MIT License is a permissive free software license that allows free use, modification, and distribution of the source code, provided that the copyright notice and the license itself are included in all copies or substantial portions of the software.
 
-Para mais detalhes, consulte o arquivo [LICENSE](LICENSE) na raiz deste repositório.
+For more details, see the [LICENSE](LICENSE) file in the root of this repository.
 
 ---
